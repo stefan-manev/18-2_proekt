@@ -1,5 +1,7 @@
 package com.maksystem.Project.Models;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -13,62 +15,28 @@ public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter @Setter
     private int project_id;
 
+    @Getter @Setter
     private String p_name;
+    @Getter @Setter
     private String p_description;
+    @Getter @Setter
     private boolean active;
 
     @OneToMany(mappedBy = "project")
+    @Getter @Setter
     private Set<Task> tasks;
 
     @ManyToOne
     @JoinColumn(name = "admin")
+    @Getter @Setter
     private Admin admin;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE})
+    @Getter @Setter
     private Set<Employee> employees = new HashSet<>();
-
-    public int getProject_id() {
-        return project_id;
-    }
-
-    public void setProject_id(int project_id) {
-        this.project_id = project_id;
-    }
-
-    public String getP_name() {
-        return p_name;
-    }
-
-    public void setP_name(String p_name) {
-        this.p_name = p_name;
-    }
-
-    public String getP_description() {
-        return p_description;
-    }
-
-    public void setP_description(String p_description) {
-        this.p_description = p_description;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public Set<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(Set<Task> tasks) {
-        this.tasks = tasks;
-    }
-
 
     @Override
     public String toString() {

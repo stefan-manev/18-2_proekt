@@ -1,5 +1,7 @@
 package com.maksystem.Project.Models;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -12,48 +14,21 @@ public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter @Setter
     private int task_id;
 
+    @Getter @Setter
     private String t_name;
+    @Getter @Setter
     private String t_description;
 
+    @Getter @Setter
     private boolean active;
 
     @ManyToOne
     @JoinColumn(name = "project_id")
+    @Getter @Setter
     private Project project;
-
-    public int getTask_id() {
-        return task_id;
-    }
-
-    public void setTask_id(int task_id) {
-        this.task_id = task_id;
-    }
-
-    public String getT_name() {
-        return t_name;
-    }
-
-    public void setT_name(String t_name) {
-        this.t_name = t_name;
-    }
-
-    public String getT_description() {
-        return t_description;
-    }
-
-    public void setT_description(String t_description) {
-        this.t_description = t_description;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
 
     @Override
     public String toString() {
