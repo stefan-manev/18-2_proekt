@@ -26,19 +26,19 @@ public class RegistrationService {
         return registration;
     }
 
-    public Registration getById(Integer id) {
+    public Registration getById(Long id) {
         return registrationRepo.getOne(id);
     }
 
-    public List<Registration> getByfName(String fname) {
-        return registrationRepo.findAllByFName(fname);
-    }
+//    public List<Registration> getByfName(String fname) {
+//        return registrationRepo.findRegistrationsByF_name(fname);
+//    }
+//
+//    public List<Registration> getBylName(String lname) {
+//        return registrationRepo.findRegistrationsByL_name(lname);
+//    }
 
-    public List<Registration> getBylName(String lname) {
-        return registrationRepo.findAllByLName(lname);
-    }
-
-    public Registration editRegistration(Integer id, Registration registration) {
+    public Registration editRegistration(Long id, Registration registration) {
 
         if (getById(id) == null) return null;
 
@@ -55,7 +55,7 @@ public class RegistrationService {
 
     }
 
-    public String deleteRegistration(Integer id) {
+    public String deleteRegistration(Long id) {
         try {
             registrationRepo.deleteById(id);
             return "DELETED";

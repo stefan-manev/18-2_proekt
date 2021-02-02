@@ -8,26 +8,22 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "vacation")
+@Getter @Setter
 public class Vacation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
-    private int vacation_id;
+    private Long vacation_id;
 
-    @Getter @Setter
     private Date vacation_start;
-    @Getter @Setter
     private Date vacation_end;
-    @Getter @Setter
-    private static int total_days;
+    private int total_days;
 
     @Enumerated(EnumType.STRING)
     private VacationStatus status;
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
-    @Getter @Setter
     private Employee employee;
 
 }

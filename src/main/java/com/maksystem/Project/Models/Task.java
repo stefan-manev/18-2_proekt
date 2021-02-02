@@ -9,28 +9,23 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @Table(name = "task")
+@Getter @Setter
 public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
-    private int task_id;
+    private Long task_id;
 
-    @Getter @Setter
     private String t_name;
-    @Getter @Setter
     private String t_description;
 
-    @Getter @Setter
     private boolean active;
 
     @Enumerated(EnumType.STRING)
-    @Getter @Setter
     private TaskStatus taskStatus;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    @Getter @Setter
     private Category category;
 
     @Override

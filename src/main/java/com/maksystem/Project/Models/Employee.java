@@ -12,36 +12,30 @@ import java.util.Set;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "employee")
+@Getter @Setter
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter @Setter
-    private int employee_id;
+    private Long employee_id;
 
-    @Getter @Setter
     private String e_Fname;
-    @Getter @Setter
     private String e_Lname;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Getter @Setter
     private Date e_birthday;
 
-    @Getter @Setter
     private String email;
-    @Getter @Setter
     private float salary;
-    @Getter @Setter
     private String position;
-    @Getter @Setter
     private String password;
-    @Getter @Setter
     private String password_conf;
+
+    @ManyToMany
+    private Set<Role> roles;
 
     @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "employee_project", joinColumns = { @JoinColumn(name = "employee_id")}, inverseJoinColumns = { @JoinColumn(name = "project_id")})
-    @Getter @Setter
     private Set<Project> projects = new HashSet<>();
 
 
