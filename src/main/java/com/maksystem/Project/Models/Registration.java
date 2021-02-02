@@ -16,8 +16,8 @@ public class Registration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long registration_id;
 
-    private String f_name;
-    private String l_name;
+    private String fname;
+    private String lname;
     private String email;
     private String password;
     private String password_conf;
@@ -27,8 +27,8 @@ public class Registration {
 
     public Registration updateRegistration(Registration registration) {
         try {
-            this.f_name = registration.f_name;
-            this.l_name = registration.l_name;
+            this.fname = registration.fname;
+            this.lname = registration.lname;
             this.birthday = registration.birthday;
             this.email = registration.email;
             this.password = registration.password;

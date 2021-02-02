@@ -1,17 +1,25 @@
 package com.maksystem.Project.Services;
 
+import com.maksystem.Project.Models.Employee;
 import com.maksystem.Project.Models.Registration;
+import com.maksystem.Project.Models.Role;
+import com.maksystem.Project.Repos.EmployeeRepo;
 import com.maksystem.Project.Repos.RegistrationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class RegistrationService {
 
     @Autowired
     private RegistrationRepo registrationRepo;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     public List<Registration> getAllRegistrations() {
         return registrationRepo.findAll();
@@ -30,13 +38,13 @@ public class RegistrationService {
         return registrationRepo.getOne(id);
     }
 
-//    public List<Registration> getByfName(String fname) {
-//        return registrationRepo.findRegistrationsByF_name(fname);
-//    }
-//
-//    public List<Registration> getBylName(String lname) {
-//        return registrationRepo.findRegistrationsByL_name(lname);
-//    }
+    public List<Registration> getByName(String name) {
+        return registrationRepo.findRegistrationsByFname(name);
+    }
+
+    public List<Registration> getByLastName(String name) {
+        return registrationRepo.findRegistrationsByLname(name);
+    }
 
     public Registration editRegistration(Long id, Registration registration) {
 
@@ -66,8 +74,8 @@ public class RegistrationService {
     }
 
     private boolean hasAllComps(Registration registration) {
-        if (registration.getF_name() != null &&
-            registration.getL_name() != null &&
+        if (registration.getFname() != null &&
+            registration.getLname() != null &&
             registration.getBirthday() != null &&
             registration.getPassword() != null &&
             registration.getPassword_conf() != null &&
@@ -75,5 +83,29 @@ public class RegistrationService {
             return true;
         }
         return false;
+    }
+
+    public boolean aprove(Registration registration, Role role, String position, float salary) {
+        Employee employee = new Employee();
+        employee.setFname(registration.getFname());
+        employee.setLname(registration.getLname());
+        employee.setBirthday(registration.getBirthday());
+        employee.setEmail(registration.getEmail());
+        employee.setPassword(registration.getPassword());
+        employee.setPassword_conf(registration.getPassword_conf());
+
+        Set<Role> set = new HashSet<>();
+        set.add(role);
+        employee.setRoles(set);
+
+        employee.setPosition(position);
+        employee.setSalary(salary);
+
+        try {
+            employeeService.insertEmployee(employee);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

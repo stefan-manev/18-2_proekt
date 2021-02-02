@@ -19,11 +19,11 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long employee_id;
 
-    private String e_Fname;
-    private String e_Lname;
+    private String fname;
+    private String lname;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date e_birthday;
+    private Date birthday;
 
     private String email;
     private float salary;
@@ -42,6 +42,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        return String.format("Employee: %s %s", getE_Fname(), getE_Lname());
+        return String.format("Employee: %s %s", getFname(), getLname());
     }
 }

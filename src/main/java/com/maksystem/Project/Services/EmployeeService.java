@@ -36,9 +36,6 @@ public class EmployeeService {
         employee.setPassword(bCryptPasswordEncoder.encode(employee.getPassword()));
         employee.setPassword_conf(bCryptPasswordEncoder.encode(employee.getPassword_conf()));
 
-        Set<Role> set = new HashSet<>();
-        set.add(roleRepo.getOne(1L));
-        employee.setRoles(set);
         employeeRepo.save(employee);
 
         return employee;
