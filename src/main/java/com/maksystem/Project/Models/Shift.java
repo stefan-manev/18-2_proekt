@@ -4,30 +4,27 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Date;
 
 @Entity
-@Table(name = "vacation")
-public class Vacation {
+@Table(name = "shift")
+public class Shift {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
-    private int vacation_id;
+    private int shift_id;
 
     @Getter @Setter
-    private Date vacation_start;
+    private String shift_start;
     @Getter @Setter
-    private Date vacation_end;
+    private String shift_end;
     @Getter @Setter
-    private static int total_days;
-
-    @Enumerated(EnumType.STRING)
-    private VacationStatus status;
+    private float worked_hours;
+    @Getter @Setter
+    private float break_hours;
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
     @Getter @Setter
     private Employee employee;
-
 }

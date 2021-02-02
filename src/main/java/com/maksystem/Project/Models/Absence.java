@@ -23,6 +23,9 @@ public class Absence {
     @Getter @Setter
     private static int total_days;
 
+    @Enumerated(EnumType.STRING)
+    private VacationStatus status;
+
     @ManyToOne
     @JoinColumn(name = "employee_id")
     @Getter @Setter

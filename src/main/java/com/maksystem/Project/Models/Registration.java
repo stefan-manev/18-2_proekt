@@ -22,6 +22,10 @@ public class Registration {
     private String l_name;
     @Getter @Setter
     private String email;
+    @Getter @Setter
+    private String password;
+    @Getter @Setter
+    private String password_conf;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Getter @Setter

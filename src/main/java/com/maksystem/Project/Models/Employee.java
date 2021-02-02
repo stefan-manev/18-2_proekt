@@ -36,6 +36,10 @@ public class Employee {
     private float salary;
     @Getter @Setter
     private String position;
+    @Getter @Setter
+    private String password;
+    @Getter @Setter
+    private String password_conf;
 
     @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "employee_project", joinColumns = { @JoinColumn(name = "employee_id")}, inverseJoinColumns = { @JoinColumn(name = "project_id")})

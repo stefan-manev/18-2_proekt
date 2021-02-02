@@ -25,10 +25,14 @@ public class Task {
     @Getter @Setter
     private boolean active;
 
-    @ManyToOne
-    @JoinColumn(name = "project_id")
+    @Enumerated(EnumType.STRING)
     @Getter @Setter
-    private Project project;
+    private TaskStatus taskStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    @Getter @Setter
+    private Category category;
 
     @Override
     public String toString() {

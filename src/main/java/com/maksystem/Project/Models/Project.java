@@ -25,14 +25,18 @@ public class Project {
     @Getter @Setter
     private boolean active;
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "category")
     @Getter @Setter
-    private Set<Task> tasks;
+    private Set<Category> categories;
 
     @ManyToOne
     @JoinColumn(name = "admin")
     @Getter @Setter
     private Admin admin;
+
+    @Enumerated(EnumType.STRING)
+    @Getter @Setter
+    private ProjectStatus projectStatus;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE})
     @Getter @Setter
