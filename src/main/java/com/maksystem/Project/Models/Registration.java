@@ -31,4 +31,19 @@ public class Registration {
     @Getter @Setter
     private Date birthday;
 
+    public Registration updateRegistration(Registration registration) {
+        try {
+            this.f_name = registration.f_name;
+            this.l_name = registration.l_name;
+            this.birthday = registration.birthday;
+            this.email = registration.email;
+            this.password = registration.password;
+            this.password_conf = registration.password_conf;
+
+            return this;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }
