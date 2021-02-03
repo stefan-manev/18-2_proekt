@@ -3,15 +3,15 @@ package com.maksystem.Project.Models;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "hasrole")
 @Getter @Setter
 public class HasRole {
+
+    @EmbeddedId
+    private HasRoleKey id;
 
     @ManyToOne
     @MapsId("employee")
