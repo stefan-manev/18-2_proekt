@@ -18,6 +18,8 @@ public class Absence {
     private Date absence_start;
     private Date absence_end;
 
+    private String comment;
+
     private int total_days;
 
     @Enumerated(EnumType.STRING)

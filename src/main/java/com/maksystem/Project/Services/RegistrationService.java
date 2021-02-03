@@ -1,13 +1,15 @@
 package com.maksystem.Project.Services;
 
 import com.maksystem.Project.Models.Employee;
+import com.maksystem.Project.Models.HasRole;
 import com.maksystem.Project.Models.Registration;
 import com.maksystem.Project.Models.Role;
-import com.maksystem.Project.Repos.EmployeeRepo;
+import com.maksystem.Project.Repos.HasRoleRepo;
 import com.maksystem.Project.Repos.RegistrationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,6 +22,9 @@ public class RegistrationService {
 
     @Autowired
     private EmployeeService employeeService;
+
+    @Autowired
+    private HasRoleRepo hasRoleRepo;
 
     public List<Registration> getAllRegistrations() {
         return registrationRepo.findAll();
@@ -94,15 +99,17 @@ public class RegistrationService {
         employee.setPassword(registration.getPassword());
         employee.setPassword_conf(registration.getPassword_conf());
 
-        Set<Role> set = new HashSet<>();
-        set.add(role);
-        employee.setRoles(set);
+        HasRole hasRole = new HasRole();
 
         employee.setPosition(position);
         employee.setSalary(salary);
 
+        hasRole.setRole(role);
+        hasRole.setEmployee(employee);
+
         try {
             employeeService.insertEmployee(employee);
+            hasRoleRepo.save(hasRole);
             return true;
         } catch (Exception e) {
             return false;

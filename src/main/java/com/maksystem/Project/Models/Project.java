@@ -28,9 +28,6 @@ public class Project {
     @Enumerated(EnumType.STRING)
     private ProjectStatus projectStatus;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE})
-    private Set<Employee> employees = new HashSet<>();
-
     @Override
     public String toString() {
         return "Project{" +
