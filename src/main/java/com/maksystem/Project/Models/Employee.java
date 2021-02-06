@@ -12,6 +12,7 @@ import java.util.Set;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "employee")
+
 @Getter @Setter
 public class Employee {
 
@@ -31,8 +32,18 @@ public class Employee {
     private String password;
     private String password_conf;
 
+
     @Override
     public String toString() {
         return String.format("Employee: %s %s", getFname(), getLname());
+        }
+
+    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    
+    @JoinTable(name = "employee_project", joinColumns = { @JoinColumn(name = "employee_id")}, inverseJoinColumns = { @JoinColumn(name = "project_id")})
+    
+    @Getter @Setter
+    private Set<Project> projects = new HashSet<>();
     }
-}
+
+ 

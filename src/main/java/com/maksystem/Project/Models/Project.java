@@ -23,6 +23,9 @@ public class Project {
     private boolean active;
 
     @OneToMany(mappedBy = "project")
+
+    @Getter @Setter
+
     private Set<Category> categories;
 
     @Enumerated(EnumType.STRING)

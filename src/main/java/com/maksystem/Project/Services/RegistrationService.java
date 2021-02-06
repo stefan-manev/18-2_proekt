@@ -43,6 +43,7 @@ public class RegistrationService {
         return registrationRepo.getOne(id);
     }
 
+
     public List<Registration> getByName(String name) {
         return registrationRepo.findRegistrationsByFname(name);
     }
@@ -50,6 +51,7 @@ public class RegistrationService {
     public List<Registration> getByLastName(String name) {
         return registrationRepo.findRegistrationsByLname(name);
     }
+
 
     public Registration editRegistration(Long id, Registration registration) {
 

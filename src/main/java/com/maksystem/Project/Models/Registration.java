@@ -14,10 +14,20 @@ public class Registration {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Getter
+    @Setter
     private Long registration_id;
 
     private String fname;
     private String lname;
+
+    @Getter
+    @Setter
+    private String f_name;
+    @Getter @Setter
+    private String l_name;
+    @Getter @Setter
     private String email;
     private String password;
     private String password_conf;
