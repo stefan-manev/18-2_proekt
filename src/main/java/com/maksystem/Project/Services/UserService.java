@@ -2,11 +2,9 @@ package com.maksystem.Project.Services;
 
 import com.maksystem.Project.Models.Employee;
 import com.maksystem.Project.Models.HasRole;
-import com.maksystem.Project.Models.Registration;
 import com.maksystem.Project.Models.Role;
 import com.maksystem.Project.Repos.EmployeeRepo;
 import com.maksystem.Project.Repos.HasRoleRepo;
-import com.maksystem.Project.Repos.RegistrationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
