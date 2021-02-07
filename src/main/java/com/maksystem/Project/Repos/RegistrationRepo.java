@@ -5,7 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface RegistrationRepo extends JpaRepository<Registration, Integer> {
-    public List<Registration> findAllByFName(String fname);
-    public List<Registration> findAllByLName(String lname);
+
+public interface RegistrationRepo extends JpaRepository<Registration, Long> {
+    public List<Registration> findRegistrationsByFname(String name);
+    public List<Registration> findRegistrationsByLname(String name);
+
 }

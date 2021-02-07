@@ -4,30 +4,35 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.sql.Date;
 
 @Entity
 @Table(name = "vacation")
+@Getter @Setter
 public class Vacation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
-    private int vacation_id;
+    private Long vacation_id;
+
 
     @Getter @Setter
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date vacation_start;
     @Getter @Setter
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+
     private Date vacation_end;
-    @Getter @Setter
-    private static int total_days;
+    private int total_days;
 
     @Enumerated(EnumType.STRING)
-    private VacationStatus status;
+    private VacationStatus status= VacationStatus.PENDING;
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
-    @Getter @Setter
     private Employee employee;
 
 }

@@ -9,32 +9,36 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "registration")
+@Getter @Setter
 public class Registration {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
-    private int registration_id;
 
-    @Getter @Setter
+    @Getter
+    @Setter
+    private Long registration_id;
+
+    private String fname;
+    private String lname;
+
+    @Getter
+    @Setter
     private String f_name;
     @Getter @Setter
     private String l_name;
     @Getter @Setter
     private String email;
-    @Getter @Setter
     private String password;
-    @Getter @Setter
     private String password_conf;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Getter @Setter
     private Date birthday;
 
     public Registration updateRegistration(Registration registration) {
         try {
-            this.f_name = registration.f_name;
-            this.l_name = registration.l_name;
+            this.fname = registration.fname;
+            this.lname = registration.lname;
             this.birthday = registration.birthday;
             this.email = registration.email;
             this.password = registration.password;

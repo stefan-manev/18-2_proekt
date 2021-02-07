@@ -11,36 +11,25 @@ import java.util.Set;
 @Entity
 @DynamicUpdate
 @Table(name = "project")
+@Getter @Setter
 public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
-    private int project_id;
+    private Long project_id;
 
-    @Getter @Setter
     private String p_name;
-    @Getter @Setter
     private String p_description;
-    @Getter @Setter
     private boolean active;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "project")
+
     @Getter @Setter
+
     private Set<Category> categories;
 
-    @ManyToOne
-    @JoinColumn(name = "admin")
-    @Getter @Setter
-    private Admin admin;
-
     @Enumerated(EnumType.STRING)
-    @Getter @Setter
     private ProjectStatus projectStatus;
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE})
-    @Getter @Setter
-    private Set<Employee> employees = new HashSet<>();
 
     @Override
     public String toString() {

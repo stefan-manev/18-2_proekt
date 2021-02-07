@@ -1,17 +1,30 @@
 package com.maksystem.Project.Services;
 
+import com.maksystem.Project.Models.Employee;
+import com.maksystem.Project.Models.HasRole;
 import com.maksystem.Project.Models.Registration;
+import com.maksystem.Project.Models.Role;
+import com.maksystem.Project.Repos.HasRoleRepo;
 import com.maksystem.Project.Repos.RegistrationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class RegistrationService {
 
     @Autowired
     private RegistrationRepo registrationRepo;
+
+    @Autowired
+    private EmployeeService employeeService;
+
+    @Autowired
+    private HasRoleRepo hasRoleRepo;
 
     public List<Registration> getAllRegistrations() {
         return registrationRepo.findAll();
@@ -26,19 +39,21 @@ public class RegistrationService {
         return registration;
     }
 
-    public Registration getById(Integer id) {
+    public Registration getById(Long id) {
         return registrationRepo.getOne(id);
     }
 
-    public List<Registration> getByfName(String fname) {
-        return registrationRepo.findAllByFName(fname);
+
+    public List<Registration> getByName(String name) {
+        return registrationRepo.findRegistrationsByFname(name);
     }
 
-    public List<Registration> getBylName(String lname) {
-        return registrationRepo.findAllByLName(lname);
+    public List<Registration> getByLastName(String name) {
+        return registrationRepo.findRegistrationsByLname(name);
     }
 
-    public Registration editRegistration(Integer id, Registration registration) {
+
+    public Registration editRegistration(Long id, Registration registration) {
 
         if (getById(id) == null) return null;
 
@@ -55,7 +70,7 @@ public class RegistrationService {
 
     }
 
-    public String deleteRegistration(Integer id) {
+    public String deleteRegistration(Long id) {
         try {
             registrationRepo.deleteById(id);
             return "DELETED";
@@ -66,8 +81,8 @@ public class RegistrationService {
     }
 
     private boolean hasAllComps(Registration registration) {
-        if (registration.getF_name() != null &&
-            registration.getL_name() != null &&
+        if (registration.getFname() != null &&
+            registration.getLname() != null &&
             registration.getBirthday() != null &&
             registration.getPassword() != null &&
             registration.getPassword_conf() != null &&
@@ -75,5 +90,31 @@ public class RegistrationService {
             return true;
         }
         return false;
+    }
+
+    public boolean aprove(Registration registration, Role role, String position, float salary) {
+        Employee employee = new Employee();
+        employee.setFname(registration.getFname());
+        employee.setLname(registration.getLname());
+        employee.setBirthday(registration.getBirthday());
+        employee.setEmail(registration.getEmail());
+        employee.setPassword(registration.getPassword());
+        employee.setPassword_conf(registration.getPassword_conf());
+
+        HasRole hasRole = new HasRole();
+
+        employee.setPosition(position);
+        employee.setSalary(salary);
+
+        hasRole.setRole(role);
+        hasRole.setEmployee(employee);
+
+        try {
+            employeeService.insertEmployee(employee);
+            hasRoleRepo.save(hasRole);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
