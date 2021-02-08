@@ -30,7 +30,10 @@ public class Vacation {
 
     @Enumerated(EnumType.STRING)
     private VacationStatus status= VacationStatus.PENDING;
-
+    
+    @Enumerated(EnumType.STRING)
+    private VacationType type;
+    
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
