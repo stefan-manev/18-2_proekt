@@ -13,7 +13,7 @@ public class Shift {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shift_id;
-
+    
     private String shift_start;
     private String shift_end;
     private float worked_hours;
