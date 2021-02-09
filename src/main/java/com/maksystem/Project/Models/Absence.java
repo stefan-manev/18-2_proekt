@@ -18,15 +18,13 @@ public class Absence {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long absence_id;
 
-    @Getter @Setter
+
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date absence_start;
    
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    @Getter @Setter
     private Date absence_end;
-    
-    @Getter @Setter
+
     private String comment;
 
     private int total_days;
