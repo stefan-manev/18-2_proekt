@@ -1,5 +1,6 @@
 package com.maksystem.Project.Services;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -34,21 +35,31 @@ public class ShiftService {
 		return shiftRepo.findAllByEmployee(employee);
 	}
 
+	public Shift getLastShift(Employee employee, LocalDate localDateTime){
+    	Shift lastShift = shiftRepo.findByEmployeeAndDate(employee,localDateTime);
+    	return lastShift;
+	}
+
 	public void startShift(){
 		Shift shift = new Shift();
 		LocalDateTime date = LocalDateTime.now();
 		shift.setDate(date.toLocalDate());
 		String time = date.getHour()+":"+date.getMinute();
 		shift.setShift_start(time);
+		Employee employee = employeeRepo.findById(Long.valueOf(2)).orElseThrow();
+		shift.setEmployee(employee);
 
     	shiftRepo.save(shift);
 	}
 
-	public void endShift(Shift s, String timeOut){
-    	Shift alreadyStartedShift = shiftRepo.findById(s.getShift_id()).orElseThrow();
-    	alreadyStartedShift.setShift_end(timeOut);
+	public void endShift(Shift s){
+		LocalDateTime date = LocalDateTime.now();
+		String timeOut = date.getHour()+":"+date.getMinute();
 
-    	shiftRepo.save(alreadyStartedShift);
+    	s.setShift_end(timeOut);
+    	//alreadyStartedShift.setShift_end(timeOut);
+
+    	shiftRepo.save(s);
 	}
 
 

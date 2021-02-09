@@ -19,19 +19,19 @@ import com.maksystem.Project.Repos.VacationRepo;
 
 @Service
 public class DummyDataService {
- 
-	@Autowired
-	private AbsenceRepo absenceRepo;
-	@Autowired
-	private ShiftRepo shiftRepo;
-	@Autowired
-	private VacationRepo vacationRepo;
-	@Autowired
-	private EmployeeRepo emoployeeRepo;
-	
+
+
+	private final AbsenceRepo absenceRepo;
+
+	private final ShiftRepo shiftRepo;
+
+	private final VacationRepo vacationRepo;
+
+	private final EmployeeRepo emoployeeRepo;
+
 	public DummyDataService(AbsenceRepo absenceRepo, ShiftRepo shiftRepo, VacationRepo vacationRepo,
 			EmployeeRepo emoployeeRepo) {
-		
+
 		this.absenceRepo = absenceRepo;
 		this.shiftRepo = shiftRepo;
 		this.vacationRepo = vacationRepo;
@@ -60,8 +60,8 @@ public class DummyDataService {
 		 shift.setEmployee(employee);
 		 shiftRepo.save(shift);
 	}
-	
 
-	
-	
+
+
+
 }
