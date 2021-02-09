@@ -34,6 +34,7 @@ public class UserService implements UserDetailsService {
 	private final static String USER_NOT_FOUND_MSG = "user with email %s not found";
 	@Autowired
 	private final EmployeeRepo employeeRepository;
+	@Autowired
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Autowired

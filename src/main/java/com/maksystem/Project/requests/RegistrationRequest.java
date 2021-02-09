@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import org.springframework.stereotype.Component;
 
+import com.maksystem.Project.Models.RoleTypes;
+
 import lombok.*;
 
 // attributes entered in registration form
@@ -22,6 +24,6 @@ public class RegistrationRequest {
 	private String password_confirmation;
 	private Date bday;
 	private String position;
-	private String role;
+	private RoleTypes role;
 	private int salary;
 }

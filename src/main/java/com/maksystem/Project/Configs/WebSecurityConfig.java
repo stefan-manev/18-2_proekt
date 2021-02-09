@@ -27,51 +27,58 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 * 
 	 * @Autowired
 	 */
-	
-    private final UserService userService;
 
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeRequests()
-                .antMatchers("/register", "/login", "/resources","/employee/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/")
-                .permitAll()
-                .and()
-                .logout()
-                .logoutSuccessUrl("/login")
-                .permitAll();
-    }
-    
+	private final UserService userService;
+	private final BCryptPasswordEncoder passwordEncoder;
 	/*
-	 * @Bean public AuthenticationManager customAuthenticationManager() throws
-	 * Exception { return authenticationManager(); }
-	 * 
+	 * @Bean public BCryptPasswordEncoder bCryptPasswordEncoder() { return new
+	 * BCryptPasswordEncoder(); }
+	 */
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http
+		.csrf().disable()
+		.authorizeRequests()
+		.antMatchers("/**").permitAll()
+		.anyRequest().authenticated()
+		.and()
+		.formLogin().permitAll()
+		.and()
+		.logout().permitAll();
+		
+		/*
+		 * httpSecurity.authorizeRequests().antMatchers("/register", "/login",
+		 * "/resources", "/employee/**", "/index/**", "/users",
+		 * "ApproveEmployeeForm/**").permitAll()
+		 * .anyRequest().authenticated().and().formLogin().loginPage("/login").
+		 * defaultSuccessUrl("/").permitAll()
+		 * .and().logout().logoutSuccessUrl("/login").permitAll();
+		 */
+	}
+
+	@Bean
+	public AuthenticationManager customAuthenticationManager() throws Exception {
+		return authenticationManager();
+	}
+	/*
 	 * @Autowired public void configureGlobal(AuthenticationManagerBuilder auth)
 	 * throws Exception { auth.userDetailsService(employeeService).passwordEncoder(
 	 * bCryptPasswordEncoder()); }
 	 */
-    
-    @Override
+
+	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(daoAuthenticationProvider());
-	} //we specify that all requests must be authenticated (users must login), and use the default login and logout configuration provided by Spring Security
-	
-	@Bean //To use Spring security with Spring Data JPA and Hibernate
+	} // we specify that all requests must be authenticated (users must login), and
+		// use the default login and logout configuration provided by Spring Security
+
+	@Bean // To use Spring security with Spring Data JPA and Hibernate
 	public DaoAuthenticationProvider daoAuthenticationProvider() {
-		DaoAuthenticationProvider authProvider= new DaoAuthenticationProvider();
-		authProvider.setPasswordEncoder(bCryptPasswordEncoder());
-		authProvider.setUserDetailsService(userService); 
+		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+		authProvider.setPasswordEncoder(passwordEncoder);
+		authProvider.setUserDetailsService(userService);
 		return authProvider;
 	}
-
 
 }

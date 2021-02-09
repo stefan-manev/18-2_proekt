@@ -23,7 +23,7 @@ public interface EmployeeRepo extends JpaRepository<Employee, Long> {
 	Optional<Employee> findByEmail(@Param("email") String email);
 	
 	// za pending requests to be approved
-	@Query("select new maksystem.login_registration.model.PendingRequest(e.firstName, e.lastName, e.email) "
+	@Query("select new com.maksystem.Project.requests.PendingRequest(e.firstName, e.lastName, e.email) "
 			+ "from Employee e where e.email = :email")
 	PendingRequest findByEmailExisting(String email);
 
@@ -31,7 +31,7 @@ public interface EmployeeRepo extends JpaRepository<Employee, Long> {
 	@Modifying
 	void deleteByEmail(String email);
 
-	@Query("select new maksystem.login_registration.model.PendingRequest(e.firstName, e.lastName, e.email) "
+	@Query("select new com.maksystem.Project.requests.PendingRequest(e.firstName, e.lastName, e.email) "
 			+ "from Employee e where e.enabled = false")
 	List<PendingRequest> listPendingRequests();
 
