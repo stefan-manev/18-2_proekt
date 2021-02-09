@@ -244,8 +244,17 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         <div id="timeControl">
-                            <form method="post" id="timeControl">
-                                <input type="button" class="btn btn-lg btn-success" id="timeControlBtn" value="Check-In"/><i class="bi bi-stopwatch"></i>
+                            <form  action="/employee/start"
+                                  method="post" th:action="@{/employee/start}"
+                                  th:object="${shift}" id="timeControl">
+                                <button type="submit" class="btn btn-lg btn-success" id="timeControlBtn">Check-In</button>
+                            </form>
+                        </div>
+                        <div id="timeControl1">
+                            <form  action="/employee/stop"
+                                   method="post" th:action="@{/employee/stop}"
+                                   th:object="${shift}" id="timeControl1">
+                                <button type="submit" class="btn btn-lg btn-success" id="timeControlBtn">Check-Out</button>
                             </form>
                         </div>
                     </div>
@@ -269,83 +278,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="table-success">
-                            <th scope="row">06-02-2020</th>
-                            <td>08:00</td>
-                            <td>16:00</td>
-                            <th scope="col">8:00</th>
+                        <tr th:each="shift : ${allShifts}" class="table-success">
+                            <th scope="row" th:text="${shift.getDate()}"></th>
+                            <td th:text="${shift.getShift_start()}"></td>
+                            <td th:text="${shift.getShift_end()}"></td>
+                            <th scope="col" th:text="${shift.getWorked_hours()}"></th>
                             <td>
                                 <form th:method="post" th:action="@{'/attendence/edit/dayId'}">
                                     <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-edit"> </i> Edit</i></button>
                                 </form>
                             </td>
                         </tr>
-                        <tr class="table-warning">
-                            <th scope="row">05-02-2020</th>
-                            <td>08:00</td>
-                            <td>14:00</td>
-                            <th scope="col">6:00</th>
-                            <td>
-                                <form th:method="post" th:action="@{'/attendence/edit/dayId'}">
-                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-edit"> </i> Edit</i></button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr class="table-success">
-                            <th scope="row">04-02-2020</th>
-                            <td>08:00</td>
-                            <td>15:00</td>
-                            <th scope="col">7:00</th>
-                            <td>
-                                <form th:method="post" th:action="@{'/attendence/edit/dayId'}">
-                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-edit"> </i> Edit</i></button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr class="table-warning">
-                            <th scope="row">03-02-2020</th>
-                            <td>08:00</td>
-                            <td>15:00</td>
-                            <th scope="col">8:00</th>
-                            <td>
-                                <form th:method="post" th:action="@{'/attendence/edit/dayId'}">
-                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-edit"> </i> Edit</i></button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr class="table-warning">
-                            <th scope="row">02-02-2020</th>
-                            <td>08:00</td>
-                            <td>15:00</td>
-                            <th scope="col">7:00</th>
-                            <td>
-                                <form th:method="post" th:action="@{'/attendence/edit/dayId'}">
-                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-edit"> </i> Edit</i></button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr class="table-success">
-                            <th scope="row">01-02-2020</th>
-                            <td>08:00</td>
-                            <td>15:00</td>
-                            <th scope="col">7:00</th>
-                            <td>
-                                <form th:method="post" th:action="@{'/attendence/edit/dayId'}">
-                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-edit"> </i> Edit</i></button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr class="table-success">
-                            <th scope="row">31-02-2020</th>
-                            <td>08:00</td>
-                            <td>15:00</td>
-                            <th scope="col">7:00</th>
-                            <td>
-                                <form th:method="post" th:action="@{'/attendence/edit/dayId'}">
-                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-edit"> </i> Edit</i></button>
-                                </form>
-                            </td>
-                        </tr>
+
                         </tbody>
                     </table>
 

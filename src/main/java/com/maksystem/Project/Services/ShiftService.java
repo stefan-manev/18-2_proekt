@@ -1,6 +1,9 @@
 package com.maksystem.Project.Services;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,11 +20,10 @@ public class ShiftService {
 	
 	private ShiftRepo shiftRepo;
 	private EmployeeRepo employeeRepo;
+
 	
-   
-    @Autowired
+
     public ShiftService(ShiftRepo shiftRepo, EmployeeRepo employeeRepo) {
-		super();
 		this.shiftRepo = shiftRepo;
 		this.employeeRepo = employeeRepo;
 	}
@@ -29,10 +31,38 @@ public class ShiftService {
 
 	public List<Shift> getShifts(Long id)
 	{
-		
-		Employee employee= employeeRepo.findById(id).get();
+		Employee employee = employeeRepo.findById(Long.valueOf(2)).orElseThrow();
 		return shiftRepo.findAllByEmployee(employee);
 	}
+
+	public Shift getLastShift(Employee employee, LocalDate localDateTime){
+    	Shift lastShift = shiftRepo.findByEmployeeAndDate(employee,localDateTime);
+    	return lastShift;
+	}
+
+	public void startShift(){
+		Shift shift = new Shift();
+		LocalDateTime date = LocalDateTime.now();
+		shift.setDate(date.toLocalDate());
+		String time = date.getHour()+":"+date.getMinute();
+		shift.setShift_start(time);
+		Employee employee = employeeRepo.findById(Long.valueOf(2)).orElseThrow();
+		shift.setEmployee(employee);
+
+    	shiftRepo.save(shift);
+	}
+
+	public void endShift(Shift s){
+		LocalDateTime date = LocalDateTime.now();
+		String timeOut = date.getHour()+":"+date.getMinute();
+
+    	s.setShift_end(timeOut);
+    	//alreadyStartedShift.setShift_end(timeOut);
+
+    	shiftRepo.save(s);
+	}
+
+
 
 
 	
