@@ -52,15 +52,17 @@ public class ProjectService {
         projectRepo.delete(project);
     }
 
-    public String addemployee(Employee employee, Project project) {
+    public String addemployee(Employee employee, Project project, Category category) {
         WorkOnProject wkp = new WorkOnProject();
 
         WorkOnProjectKey wkpKey = new WorkOnProjectKey();
         wkpKey.setEmployee(employee.getEmployee_id());
         wkpKey.setProject(project.getProject_id());
+        wkpKey.setCategory(category.getCategory_id());
 
         wkp.setEmployee(employee);
         wkp.setProjectl(project);
+        wkp.setCategory(category);
         wkp.setId(wkpKey);
 
         try {
