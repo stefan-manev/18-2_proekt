@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+</head>
+<body>
+<h1>Pending requests</h1>
+
+<table  border="1" class="table table-striped table-responsive-md">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="request : ${requests}">
+        <td th:text="${request.firstName}">123</td>
+        <td th:text="${request.lastName}"> Spring in Action</td>
+        <td th:text="${request.email}">Wrox</td>
+        <td>
+        
+        <a th:href="@{/ApproveEmployeeForm/{email}(email=${request.email})}" 
+        class="btn btn-primary">Approve</a>
+        <a th:href="@{/declineEmployee/{email}(email=${request.email})}"
+        class="btn btn-danger">Decline</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

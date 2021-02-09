@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+// ne go koristime za najava i registracija
+// to ask dragan
 @Service
 public class EmployeeService {
 
@@ -32,12 +33,14 @@ public class EmployeeService {
         return employeeRepo.getOne(id);
     }
 
-    public Employee insertEmployee(Employee employee) {
-        employee.setPassword(bCryptPasswordEncoder.encode(employee.getPassword()));
-        employee.setPassword_conf(bCryptPasswordEncoder.encode(employee.getPassword_conf()));
-
-        employeeRepo.save(employee);
-
-        return employee;
-    }
+	/*
+	 * public Employee insertEmployee(Employee employee) {
+	 * employee.setPassword(bCryptPasswordEncoder.encode(employee.getPassword()));
+	 * employee.setPassword_conf(bCryptPasswordEncoder.encode(employee.
+	 * getPassword_conf()));
+	 * 
+	 * employeeRepo.save(employee);
+	 * 
+	 * return employee; }
+	 */
 }
