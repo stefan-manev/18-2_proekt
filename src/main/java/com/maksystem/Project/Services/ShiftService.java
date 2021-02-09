@@ -2,10 +2,13 @@ package com.maksystem.Project.Services;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.maksystem.Project.Models.Absence;
@@ -29,14 +32,16 @@ public class ShiftService {
 	}
 
 
-	public List<Shift> getShifts(Long id)
+	public List<Shift> getShifts()
 	{
-		Employee employee = employeeRepo.findById(Long.valueOf(2)).orElseThrow();
-		return shiftRepo.findAllByEmployee(employee);
+		Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+		String username = loggedInUser.getName();
+		Employee e = this.employeeRepo.findByEmail(username).orElseThrow();
+		return shiftRepo.findAllByEmployee(e);
 	}
 
-	public Shift getLastShift(Employee employee, LocalDate localDateTime){
-    	Shift lastShift = shiftRepo.findByEmployeeAndDate(employee,localDateTime);
+	public List<Shift> getLastShift(Employee employee, LocalDate localDateTime){
+    	List<Shift> lastShift = shiftRepo.findByEmployeeAndDate(employee,localDateTime);
     	return lastShift;
 	}
 
@@ -46,20 +51,28 @@ public class ShiftService {
 		shift.setDate(date.toLocalDate());
 		String time = date.getHour()+":"+date.getMinute();
 		shift.setShift_start(time);
-		Employee employee = employeeRepo.findById(Long.valueOf(2)).orElseThrow();
+		Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+		String username = loggedInUser.getName();
+		Employee employee = this.employeeRepo.findByEmail(username).orElseThrow();
 		shift.setEmployee(employee);
 
     	shiftRepo.save(shift);
 	}
 
-	public void endShift(Shift s){
+	public void endShift(){
+
+		Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+		String username = loggedInUser.getName();
+		Employee employee = this.employeeRepo.findByEmail(username).orElseThrow();
+      LocalDate localDate = LocalDate.now();
+      List<Shift> shifts = this.getLastShift(employee,localDate);
+      Shift latest = shifts.get(shifts.size()-1);
 		LocalDateTime date = LocalDateTime.now();
 		String timeOut = date.getHour()+":"+date.getMinute();
 
-    	s.setShift_end(timeOut);
-    	//alreadyStartedShift.setShift_end(timeOut);
+		latest.setShift_end(timeOut);
 
-    	shiftRepo.save(s);
+    	shiftRepo.save(latest);
 	}
 
 

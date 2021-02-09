@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
 public interface ShiftRepo extends JpaRepository <Shift,Long> {
 	List<Shift> findAllByEmployee(Employee employee);
 
-	Shift findByEmployeeAndDate(Employee employee, LocalDate localDateTime);
+	List<Shift> findByEmployeeAndDate(Employee employee, LocalDate localDateTime);
 
 }

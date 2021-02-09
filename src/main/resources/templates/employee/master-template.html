@@ -8,265 +8,209 @@
     <meta name="generator" content="Hugo 0.80.0">
     <title>Dashboard Template · Bootstrap v4.6</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/dashboard/">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+            integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+            crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
-    <style>
-        .nav-link[data-toggle].collapsed:before {
-            content: " ▾";
-        }
-        .nav-link[data-toggle]:not(.collapsed):before {
-            content: " ▴";
-        }
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
+    <style>  .nav-link[data-toggle].collapsed:before {
+          content: " ▾";
+         
+    }
+
+      .nav-link[data-toggle]:not(.collapsed):before {
+          content: " ▴";
+         
+    }
+
+      .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+         
+    }
+
+     
+
+    @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+              font-size: 3.5rem;
+             
         }
 
-        #time{
-            font-size: 3em;
-        }
-    </style>
+         
+    }
+
+       #time {
+          font-size: 3em;
+         
+    }
+
+         </style>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.1.119/styles/kendo.common.min.css" />
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.1.119/styles/kendo.blueopal.min.css" />
-
-
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.1.119/styles/kendo.common.min.css"/>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.1.119/styles/kendo.blueopal.min.css"/>
     <!--Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet"> <!--load all styles -->
-
-    <!-- Custom styles for this template -->
-    <link th:href="@{/employee/dashboard.css}" rel="stylesheet" />
-    <link th:href="@{/employee/custom.css}" rel="stylesheet" />
-
-    <!-- Core CSS file -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet">
+    <!--load all styles -->      <!-- Custom styles for this template -->
+    <link th:href="@{/employee/dashboard.css}" rel="stylesheet"/>
+    <link th:href="@{/employee/custom.css}" rel="stylesheet"/>      <!-- Core CSS file -->
     <link rel="stylesheet" th:href="@{/employee/photo-swipe/photoswipe.css}">
-
-    <!-- Skin CSS file (styling of UI - buttons, caption, etc.)
-         In the folder of skin CSS file there are also:
-         - .png and .svg icons sprite,
-         - preloader.gif (for browsers that do not support CSS animations) -->
+    <!-- Skin CSS file (styling of UI - buttons, caption, etc.)          In the folder of skin CSS file there are also:          - .png and .svg icons sprite,          - preloader.gif (for browsers that do not support CSS animations) -->
     <link rel="stylesheet" th:href="@{/employee/photo-swipe/default-skin/default-skin.css}">
+    <script th:inline="javascript">         /*<![CDATA[*/
+    var myVar;
 
+    function start() {
+        myVar = setInterval(myTimer, 1000);
 
+    }
+
+    function myTimer() {
+        var d = new Date();
+        document.getElementById("time").innerHTML = d.toLocaleTimeString();
+    }
+
+    function enablebtn1() {
+        document.getElementById("timeControlBtn1").disabled = !document.getElementById("timeControlBtn1").disabled;
+    }
+
+    function enablebtn2() {
+        document.getElementById("timeControlBtn2").disabled = !document.getElementById("timeControlBtn2").disabled;
+    }     /*]]>*/     </script>
 </head>
 <body>
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">MAK-SYSTEM</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"><a
+        class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">MAK-SYSTEM</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
+            data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span></button>
     <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Sign out</a>
-        </li>
+        <li class="nav-item text-nowrap"><a class="nav-link" href="#">Sign out</a></li>
     </ul>
 </nav>
 <div class="container-fluid">
     <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-            <div class="sidebar-sticky pt-3">
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mb-1 text-muted">
-                    <span>Main Navigation</span>
-                </h6>
+            <div class="sidebar-sticky pt-3"><h6
+                    class="sidebar-heading d-flex justify-content-between align-items-center px-3 mb-1 text-muted">
+                <span>Main Navigation</span></h6>
                 <ul class="nav flex-column flex-nowrap overflow-hidden">
-                    <li class="nav-item">
-                        <a class="nav-link collapsed text-truncate" href="#submenu1" data-toggle="collapse" data-target="#submenu1"><i class="fa fa-table"></i> <span class="d-none d-sm-inline">Menu #1</span></a>
+                    <li class="nav-item"><a class="nav-link collapsed text-truncate" href="#submenu1"
+                                            data-toggle="collapse" data-target="#submenu1"><i class="fa fa-table"></i>
+                        <span class="d-none d-sm-inline">Your vacation</span></a>
                         <div class="collapse" id="submenu1" aria-expanded="false">
                             <ul class="flex-column pl-4 nav">
-                                <li class="nav-item"><a class="nav-link py-0" href="#"><span>Sub-Menu #1</span></a></li>
-                                <li class="nav-item">
-                                    <a class="nav-link collapsed py-1" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1"><span>Sub-Menu #2</span></a>
-                                    <div class="collapse" id="submenu1sub1" aria-expanded="false">
-                                        <ul class="flex-column nav pl-5">
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#">
-                                                    <i class="fa fa-fw fa-clock-o"></i>Sub-Sub-Menu #1</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#">
-                                                    <i class="fa fa-fw fa-dashboard">Sub-Sub-Menu #2</i> </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#">
-                                                    <i class="fa fa-fw fa-bar-chart"></i>Sub-Sub-Menu #3</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#">
-                                                    <i class="fa fa-fw fa-compass"></i>Sub-Sub-Menu #4</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/employee/enter-vacation'}"><span>Enter vacation</span></a>
                                 </li>
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/employee/view-calendar'}"><span>View calendar</span></a>
+                                </li>
+                                <!-- <li class="nav-item">                                      <a class="nav-link collapsed py-1" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1"><span>View Calendar</span></a>                                      <div class="collapse" id="submenu1sub1" aria-expanded="false">                                          <ul class="flex-column nav pl-5">                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-clock-o"></i>Sub-Sub-Menu #1</a>                                              </li>                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-dashboard">Sub-Sub-Menu #2</i> </a>                                              </li>                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-bar-chart"></i>Sub-Sub-Menu #3</a>                                              </li>                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-compass"></i>Sub-Sub-Menu #4</a>                                              </li>                                          </ul>                                      </div>-->                                 </li>
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link collapsed text-truncate" href="#submenu2" data-toggle="collapse" data-target="#submenu2"><i class="fa fa-table"></i> <span class="d-none d-sm-inline">Menu #2</span></a>
+                    <li class="nav-item"><a class="nav-link collapsed text-truncate" href="#submenu2"
+                                            data-toggle="collapse" data-target="#submenu2"><i class="fa fa-table"></i>
+                        <span class="d-none d-sm-inline">Absences</span></a>
                         <div class="collapse" id="submenu2" aria-expanded="false">
                             <ul class="flex-column pl-4 nav">
-                                <li class="nav-item"><a class="nav-link py-0" href="#"><span>Sub-Menu #1</span></a></li>
-                                <li class="nav-item">
-                                    <a class="nav-link collapsed py-1" href="#submenu2sub1" data-toggle="collapse" data-target="#submenu2sub1"><span>Sub-Menu #2</span></a>
-                                    <div class="collapse" id="submenu2sub1" aria-expanded="false">
-                                        <ul class="flex-column nav pl-5">
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#">
-                                                    <i class="fa fa-fw fa-clock-o"></i>Sub-Sub-Menu #1</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#">
-                                                    <i class="fa fa-fw fa-dashboard">Sub-Sub-Menu #2</i> </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#">
-                                                    <i class="fa fa-fw fa-bar-chart"></i>Sub-Sub-Menu #3</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#">
-                                                    <i class="fa fa-fw fa-compass"></i>Sub-Sub-Menu #4</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/employee/enter-absence'}"><span>Enter absence</span></a>
                                 </li>
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/employee/view-calendar'}"><span>View calendar</span></a>
+                                </li>
+                                <!-- <li class="nav-item">                                      <a class="nav-link collapsed py-1" href="#submenu2sub1" data-toggle="collapse" data-target="#submenu2sub1"><span>Sub-Menu #2</span></a>                                      <div class="collapse" id="submenu2sub1" aria-expanded="false">                                          <ul class="flex-column nav pl-5">                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-clock-o"></i>Sub-Sub-Menu #1</a>                                              </li>                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-dashboard">Sub-Sub-Menu #2</i> </a>                                              </li>                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-bar-chart"></i>Sub-Sub-Menu #3</a>                                              </li>                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-compass"></i>Sub-Sub-Menu #4</a>                                              </li>                                          </ul>                                      </div>-->                                 </li>
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link collapsed text-truncate" href="#submenu3" data-toggle="collapse" data-target="#submenu3"><i class="fa fa-table"></i> <span class="d-none d-sm-inline">Menu #3</span></a>
+                    <li class="nav-item"><a class="nav-link collapsed text-truncate" href="#submenu3"
+                                            data-toggle="collapse" data-target="#submenu3"><i class="fa fa-table"></i>
+                        <span class="d-none d-sm-inline">Time tracking</span></a>
                         <div class="collapse" id="submenu3" aria-expanded="false">
                             <ul class="flex-column pl-4 nav">
-                                <li class="nav-item"><a class="nav-link py-0" href="#"><span>Sub-Menu #1</span></a></li>
-                                <li class="nav-item">
-                                    <a class="nav-link collapsed py-1" href="#submenu3sub1" data-toggle="collapse" data-target="#submenu3sub1"><span>Sub-Menu #2</span></a>
-                                    <div class="collapse" id="submenu3sub1" aria-expanded="false">
-                                        <ul class="flex-column nav pl-5">
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#">
-                                                    <i class="fa fa-fw fa-clock-o"></i>Sub-Sub-Menu #1</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#">
-                                                    <i class="fa fa-fw fa-dashboard"></i>Sub-Sub-Menu #2 </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#">
-                                                    <i class="fa fa-fw fa-bar-chart"></i>Sub-Sub-Menu #3</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#">
-                                                    <i class="fa fa-fw fa-compass"></i>Sub-Sub-Menu #4</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/employee/tasks'}"><span>Tasks</span></a></li>
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/employee/view-calendar'}"><span>View calendar</span></a>
                                 </li>
+                                <!--<li class="nav-item">                                     <a class="nav-link collapsed py-1" href="#submenu3sub1" data-toggle="collapse" data-target="#submenu3sub1"><span>Sub-Menu #2</span></a>                                     <div class="collapse" id="submenu3sub1" aria-expanded="false">                                         <ul class="flex-column nav pl-5">                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-clock-o"></i>Sub-Sub-Menu #1</a>                                             </li>                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-dashboard"></i>Sub-Sub-Menu #2 </a>                                             </li>                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-bar-chart"></i>Sub-Sub-Menu #3</a>                                             </li>                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-compass"></i>Sub-Sub-Menu #4</a>                                             </li>                                         </ul>                                     </div>                                 </li>-->
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-truncate" href="#"><i class="fa fa-home"></i> <span class="d-none d-sm-inline">Menu #4</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-truncate" href="#"><i class="fa fa-home"></i> <span class="d-none d-sm-inline">Menu #5</span></a>
-                    </li>
-                </ul>
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Saved reports</span>
-                    <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                        <span data-feather="plus-circle"></span>
-                    </a>
-                </h6>
-                <ul class="nav flex-column mb-2">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Current month
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Last quarter
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Social engagement
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Year-end sale
-                        </a>
+                    <li class="nav-item"><a class="nav-link collapsed text-truncate" href="#submenu3"
+                                            data-toggle="collapse" data-target="#submenu4"><i class="fa fa-table"></i>
+                        <span class="d-none d-sm-inline">Settings</span></a>
+                        <div class="collapse" id="submenu4" aria-expanded="false">
+                            <ul class="flex-column pl-4 nav">
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/employee/your-account'}"><span>Your account</span></a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/employee/projects'}"><span>Projects</span></a></li>
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/employee/change-password'}"><span>Change password</span></a>
+                                </li>
+                                <!--<li class="nav-item">                                     <a class="nav-link collapsed py-1" href="#submenu3sub1" data-toggle="collapse" data-target="#submenu3sub1"><span>Sub-Menu #2</span></a>                                     <div class="collapse" id="submenu3sub1" aria-expanded="false">                                         <ul class="flex-column nav pl-5">                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-clock-o"></i>Sub-Sub-Menu #1</a>                                             </li>                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-dashboard"></i>Sub-Sub-Menu #2 </a>                                             </li>                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-bar-chart"></i>Sub-Sub-Menu #3</a>                                             </li>                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-compass"></i>Sub-Sub-Menu #4</a>                                             </li>                                         </ul>                                     </div>                                 </li>-->
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>
-        </nav>
+            </ul>             </li>         </nav>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Dashboard</h1>
-
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
                         <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
                         <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
                     </div>
-                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                        <span data-feather="calendar"></span>
-                        This week
+                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle"><span
+                            data-feather="calendar"></span> This week 
                     </button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-
                     <div class="d-flex justify-content-center">
-                        <div id="time">
-                            04:29</div>
+                        <div id="time"> 04:29</div>
                     </div>
                     <div class="d-flex justify-content-center">
                         <div id="timeControl">
                             <form  action="/employee/start"
-                                  method="post" th:action="@{/employee/start}"
-                                  th:object="${shift}" id="timeControl">
-                                <button type="submit" class="btn btn-lg btn-success" id="timeControlBtn">Check-In</button>
+                                   method="post" th:action="@{/employee/start}"
+                                   th:object="${shift}" id="timeControl">
+                                <button type="submit" class="btn btn-lg btn-success" id="timeControlBtn1" >Check-In</button>
                             </form>
                         </div>
                         <div id="timeControl1">
                             <form  action="/employee/stop"
                                    method="post" th:action="@{/employee/stop}"
                                    th:object="${shift}" id="timeControl1">
-                                <button type="submit" class="btn btn-lg btn-success" id="timeControlBtn">Check-Out</button>
+                                <button type="submit" class="btn btn-lg btn-success" id="timeControlBtn2">Check-Out</button>
                             </form>
                         </div>
                     </div>
                 </div>
-
             </div>
-
             <hr>
-
             <div class="row">
                 <div class="col-md-12">
-
                     <table class="table table-bordered">
                         <thead class="thead-dark">
                         <tr>
@@ -285,105 +229,101 @@
                             <th scope="col" th:text="${shift.getWorked_hours()}"></th>
                             <td>
                                 <form th:method="post" th:action="@{'/attendence/edit/dayId'}">
-                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-edit"> </i> Edit</i></button>
+                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-edit"> </i>
+                                        Edit</i></button>
                                 </form>
                             </td>
                         </tr>
-
                         </tbody>
                     </table>
-
                 </div>
             </div>
-            <hr>
-
-            <!-- Tasks -->
+            <hr>              <!-- Tasks -->
             <div class="row" id="draggable-sortable">
                 <div class="col-md-3">
-                    <div id="tasks-todo" class="task-column" style="background-color: #eeee;padding: 10px;">
-                        <h5 class="text-muted">TO DO</h5>
+                    <div id="tasks-todo" class="task-column" style="background-color: #eeee;padding: 10px;"><h5
+                            class="text-muted">TO DO</h5>
                         <div class="container tasks">
                             <div class="task">
                                 <div class="container">
-                                    <div class="task-description" style="padding-top: 5px;">This is task description</div>
+                                    <div class="task-description" style="padding-top: 5px;">This is task description
+                                    </div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>#1111</p>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-6"><p>#1111</p><img src="https://www.placehold.it/16x16"
+                                                                               class="rounded-circle"
+                                                                               alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="task">
                                 <div class="container">
-                                    <div class="task-description" style="padding-top: 5px;">This is task description</div>
+                                    <div class="task-description" style="padding-top: 5px;">This is task description
+                                    </div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div>#1111</div>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                            <img src="https://www.placehold.it/16x16" class="rounded-circle"
+                                                 alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="task">
                                 <div class="container">
-                                    <div class="task-description" style="padding-top: 5px;">This is task description</div>
+                                    <div class="task-description" style="padding-top: 5px;">This is task description
+                                    </div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div>#1111</div>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                            <img src="https://www.placehold.it/16x16" class="rounded-circle"
+                                                 alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="task">
                                 <div class="container">
-                                    <div class="task-description" style="padding-top: 5px;">This is task description</div>
+                                    <div class="task-description" style="padding-top: 5px;">This is task description
+                                    </div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div>#1111</div>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                            <img src="https://www.placehold.it/16x16" class="rounded-circle"
+                                                 alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="task">
                                 <div class="container">
-                                    <div class="task-description" style="padding-top: 5px;">This is task description</div>
+                                    <div class="task-description" style="padding-top: 5px;">This is task description
+                                    </div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div>#1111</div>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                            <img src="https://www.placehold.it/16x16" class="rounded-circle"
+                                                 alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="task">
                                 <div class="container">
-                                    <div class="task-description" style="padding-top: 5px;">This is task description</div>
+                                    <div class="task-description" style="padding-top: 5px;">This is task description
+                                    </div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div>#1111</div>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                            <img src="https://www.placehold.it/16x16" class="rounded-circle"
+                                                 alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
@@ -391,20 +331,20 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div id="tasks-in-progress" class="task-column" style="background-color: #eeee;padding: 10px;">
-                        <h5 class="text-muted">IN PROGRESS</h5>
+                    <div id="tasks-in-progress" class="task-column" style="background-color: #eeee;padding: 10px;"><h5
+                            class="text-muted">IN PROGRESS</h5>
                         <div class="container tasks">
                             <div class="task">
                                 <div class="container">
-                                    <div class="task-description" style="padding-top: 5px;">This is task description</div>
+                                    <div class="task-description" style="padding-top: 5px;">This is task description
+                                    </div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div>#1111</div>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                            <img src="https://www.placehold.it/16x16" class="rounded-circle"
+                                                 alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
@@ -413,12 +353,11 @@
                                     <div class="task-description">This is task description</div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div>#1111</div>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                            <img src="https://www.placehold.it/16x16" class="rounded-circle"
+                                                 alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
@@ -427,12 +366,11 @@
                                     <div class="task-description">This is task description</div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div>#1111</div>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                            <img src="https://www.placehold.it/16x16" class="rounded-circle"
+                                                 alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
@@ -441,12 +379,11 @@
                                     <div class="task-description">This is task description</div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div>#1111</div>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                            <img src="https://www.placehold.it/16x16" class="rounded-circle"
+                                                 alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
@@ -455,12 +392,11 @@
                                     <div class="task-description">This is task description</div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div>#1111</div>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                            <img src="https://www.placehold.it/16x16" class="rounded-circle"
+                                                 alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
@@ -468,20 +404,20 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div id="tasks-done" class="task-column" style="background-color: #eeee;padding: 10px;">
-                        <h5 class="text-muted">DONE</h5>
+                    <div id="tasks-done" class="task-column" style="background-color: #eeee;padding: 10px;"><h5
+                            class="text-muted">DONE</h5>
                         <div class="container tasks">
                             <div class="task">
                                 <div class="container">
-                                    <div class="task-description" style="padding-top: 5px;">This is task description</div>
+                                    <div class="task-description" style="padding-top: 5px;">This is task description
+                                    </div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div>#1111</div>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                            <img src="https://www.placehold.it/16x16" class="rounded-circle"
+                                                 alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
@@ -490,12 +426,11 @@
                                     <div class="task-description">This is task description</div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div>#1111</div>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                            <img src="https://www.placehold.it/16x16" class="rounded-circle"
+                                                 alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
@@ -504,12 +439,11 @@
                                     <div class="task-description">This is task description</div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div>#1111</div>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                            <img src="https://www.placehold.it/16x16" class="rounded-circle"
+                                                 alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
@@ -518,12 +452,11 @@
                                     <div class="task-description">This is task description</div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div>#1111</div>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                            <img src="https://www.placehold.it/16x16" class="rounded-circle"
+                                                 alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
@@ -532,143 +465,110 @@
                                     <div class="task-description">This is task description</div>
                                     <span class="badge badge-warning">Project Name</span>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                        </div>
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div>#1111</div>
-                                            <img src="https://www.placehold.it/16x16" class="rounded-circle" alt="assigned to name">
-                                        </div>
+                                            <img src="https://www.placehold.it/16x16" class="rounded-circle"
+                                                 alt="assigned to name"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Modal -->
-            <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            </div>             <!-- Modal -->
+            <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-xl" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">[#TaskID] Task Title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                        <div class="modal-header"><h5 class="modal-title" id="exampleModalLabel">[#TaskID] Task
+                            Title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
                             <div class="container">
                                 <div id="modal-task-status" class="row">
-                                    <div class="col-md-2">
-                                        <strong class="text-right">
-                                            <i class="far fa-eye"></i> Task Status
-                                        </strong>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <strong class="text-right">
-                                            <span class="badge badge-success">Active</span>
-                                            <span class="badge badge-danger">Inactive</span>
-                                        </strong>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <strong class="text-right">
-                                            <i class="far fa-calendar-alt"></i> Deadline
-                                        </strong>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span class="badge badge-info">18-03-2021</span>
-                                    </div>
+                                    <div class="col-md-2"><strong class="text-right"> <i class="far fa-eye"></i> Task
+                                        Status  </strong></div>
+                                    <div class="col-md-2"><strong class="text-right"> <span class="badge badge-success">Active</span>
+                                        <span class="badge badge-danger">Inactive</span> </strong></div>
+                                    <div class="col-md-2"><strong class="text-right"> <i
+                                            class="far fa-calendar-alt"></i> Deadline  </strong></div>
+                                    <div class="col-md-6"><span class="badge badge-info">18-03-2021</span></div>
                                 </div>
                                 <hr>
                                 <div id="modal-task-deadline" class="row">
-                                    <div class="col-md-2">
-                                        <strong class="text-right">
-                                            <i class="far fa-calendar-alt"></i> Deadline
-                                        </strong>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <span class="badge badge-info">18-03-2021</span>
-                                    </div>
+                                    <div class="col-md-2"><strong class="text-right"> <i
+                                            class="far fa-calendar-alt"></i> Deadline  </strong></div>
+                                    <div class="col-md-10"><span class="badge badge-info">18-03-2021</span></div>
                                 </div>
                                 <hr>
                                 <div id="modal-task-assigned-project" class="row">
-                                    <div class="col-md-2">
-                                        <strong class="text-right">
-                                            <i class="fas fa-info"></i> Project Name
-                                        </strong>
-                                    </div>
-                                    <div class="col-md-10">
-                                        [Mak-System] Employee Management System
-                                    </div>
+                                    <div class="col-md-2"><strong class="text-right"> <i class="fas fa-info"></i>
+                                        Project Name  </strong></div>
+                                    <div class="col-md-10"> [Mak-System] Employee Management System </div>
                                 </div>
                                 <hr>
                                 <div id="modal-task-categories" class="row">
-                                    <div class="col-md-2">
-                                        <strong class="text-right">
-                                            <i class="fas fa-list"></i> Categories
-                                        </strong>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <span class="badge badge-primary">Development</span>
-                                        <span class="badge badge-primary">Marketing</span>
-                                        <span class="badge badge-primary">Sales</span>
-
-                                    </div>
+                                    <div class="col-md-2"><strong class="text-right"> <i class="fas fa-list"></i>
+                                        Categories  </strong></div>
+                                    <div class="col-md-10"><span class="badge badge-primary">Development</span> <span
+                                            class="badge badge-primary">Marketing</span> <span
+                                            class="badge badge-primary">Sales</span></div>
                                 </div>
                                 <hr>
                                 <div id="modal-task-description" class="row">
-                                    <div class="col-md-2">
-                                        <strong class="text-right">
-                                            <i class="fas fa-info-circle"></i> Description
-                                        </strong>
-                                    </div>
-                                    <div class="col-md-10">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                    <div class="col-md-2"><strong class="text-right"> <i class="fas fa-info-circle"></i>
+                                        Description  </strong></div>
+                                    <div class="col-md-10"> Lorem Ipsum is simply dummy text of the printing and
+                                        typesetting industry. Lorem Ipsum has been the industry's standard dummy text
+                                        ever since the 1500s, when an unknown printer took a galley of type and
+                                        scrambled it to make a type specimen book. It has survived not only five
+                                        centuries, but also the leap into electronic typesetting, remaining essentially
+                                        unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                                        containing Lorem Ipsum passages, and more recently with desktop publishing
+                                        software like Aldus PageMaker including versions of Lorem Ipsum. 
                                     </div>
                                 </div>
                                 <hr>
                                 <div id="modal-task-gallery" class="row">
-
-                                    <div class="col-md-2">
-                                        <i class="far fa-images"></i> <strong class="text-right">Attachments</strong>
+                                    <div class="col-md-2"><i class="far fa-images"></i> <strong class="text-right">Attachments</strong>
                                     </div>
                                     <div class="col-md-10">
                                         <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-
-
-
-                                            <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                                <a href="https://www.placehold.it/600x600" itemprop="contentUrl" data-size="964x1024">
-                                                    <img src="https://www.placehold.it/600x600" itemprop="thumbnail" alt="Image description" />
-                                                </a>
-                                                <figcaption itemprop="caption description">Image caption 2.1</figcaption>
+                                            <figure itemprop="associatedMedia" itemscope
+                                                    itemtype="http://schema.org/ImageObject"><a
+                                                    href="https://www.placehold.it/600x600" itemprop="contentUrl"
+                                                    data-size="964x1024"> <img src="https://www.placehold.it/600x600"
+                                                                               itemprop="thumbnail"
+                                                                               alt="Image description"/> </a>
+                                                <figcaption itemprop="caption description">Image caption 2.1
+                                                </figcaption>
                                             </figure>
-
-                                            <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                                <a href="https://www.placehold.it/600x600" itemprop="contentUrl" data-size="1024x683">
-                                                    <img src="https://www.placehold.it/600x600" itemprop="thumbnail" alt="Image description" />
-                                                </a>
-                                                <figcaption itemprop="caption description">Image caption 2.2</figcaption>
+                                            <figure itemprop="associatedMedia" itemscope
+                                                    itemtype="http://schema.org/ImageObject"><a
+                                                    href="https://www.placehold.it/600x600" itemprop="contentUrl"
+                                                    data-size="1024x683"> <img src="https://www.placehold.it/600x600"
+                                                                               itemprop="thumbnail"
+                                                                               alt="Image description"/> </a>
+                                                <figcaption itemprop="caption description">Image caption 2.2
+                                                </figcaption>
                                             </figure>
-
-                                            <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                                <a href="https://www.placehold.it/600x600" itemprop="contentUrl" data-size="1024x768">
-                                                    <img src="https://www.placehold.it/600x600" itemprop="thumbnail" alt="Image description" />
-                                                </a>
-                                                <figcaption itemprop="caption description">Image caption 2.3</figcaption>
+                                            <figure itemprop="associatedMedia" itemscope
+                                                    itemtype="http://schema.org/ImageObject"><a
+                                                    href="https://www.placehold.it/600x600" itemprop="contentUrl"
+                                                    data-size="1024x768"> <img src="https://www.placehold.it/600x600"
+                                                                               itemprop="thumbnail"
+                                                                               alt="Image description"/> </a>
+                                                <figcaption itemprop="caption description">Image caption 2.3
+                                                </figcaption>
                                             </figure>
-
-
-                                        </div>
-                                        <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                                        </div><!-- Root element of PhotoSwipe. Must have class pswp. -->
                                         <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-                                            <!-- Background of PhotoSwipe.
-                                                 It's a separate element, as animating opacity is faster than rgba(). -->
-                                            <div class="pswp__bg"></div>
-
-                                            <!-- Slides wrapper with overflow:hidden. -->
+                                            <!-- Background of PhotoSwipe.                                                  It's a separate element, as animating opacity is faster than rgba(). -->
+                                            <div class="pswp__bg"></div><!-- Slides wrapper with overflow:hidden. -->
                                             <div class="pswp__scroll-wrap">
-
                                                 <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
                                                 <!-- don't modify these 3 pswp__item elements, data is added later on. -->
                                                 <div class="pswp__container">
@@ -676,24 +576,19 @@
                                                     <div class="pswp__item"></div>
                                                     <div class="pswp__item"></div>
                                                 </div>
-
                                                 <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
                                                 <div class="pswp__ui pswp__ui--hidden">
-
                                                     <div class="pswp__top-bar">
-
                                                         <!--  Controls are self-explanatory. Order can be changed. -->
-
                                                         <div class="pswp__counter"></div>
-
-                                                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                                                        <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                                                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                                                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
+                                                        <button class="pswp__button pswp__button--close"
+                                                                title="Close (Esc)"></button>
+                                                        <button class="pswp__button pswp__button--share"
+                                                                title="Share"></button>
+                                                        <button class="pswp__button pswp__button--fs"
+                                                                title="Toggle fullscreen"></button>
+                                                        <button class="pswp__button pswp__button--zoom"
+                                                                title="Zoom in/out"></button>
                                                         <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
                                                         <!-- element will get class pswp__preloader--active when preloader is running -->
                                                         <div class="pswp__preloader">
@@ -704,25 +599,18 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
                                                         <div class="pswp__share-tooltip"></div>
                                                     </div>
-
-                                                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-                                                    </button>
-
-                                                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-                                                    </button>
-
+                                                    <button class="pswp__button pswp__button--arrow--left"
+                                                            title="Previous (arrow left)"></button>
+                                                    <button class="pswp__button pswp__button--arrow--right"
+                                                            title="Next (arrow right)"></button>
                                                     <div class="pswp__caption">
                                                         <div class="pswp__caption__center"></div>
                                                     </div>
-
                                                 </div>
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -735,27 +623,11 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
-            <textarea id="editor" rows="10" cols="30"></textarea>
-
-
-
-
-
-
-            <span class="badge badge-primary">Primary</span>
-            <span class="badge badge-secondary">Secondary</span>
-            <span class="badge badge-success">Success</span>
-            <span class="badge badge-danger">Danger</span>
-            <span class="badge badge-warning">Warning</span>
-            <span class="badge badge-info">Info</span>
-            <span class="badge badge-light">Light</span>
-            <span class="badge badge-dark">Dark</span>
-
+            <textarea id="editor" rows="10" cols="30"></textarea> <span class="badge badge-primary">Primary</span> <span
+                class="badge badge-secondary">Secondary</span> <span class="badge badge-success">Success</span> <span
+                class="badge badge-danger">Danger</span> <span class="badge badge-warning">Warning</span> <span
+                class="badge badge-info">Info</span> <span class="badge badge-light">Light</span> <span
+                class="badge badge-dark">Dark</span>
             <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
             <h2>Section title</h2>
             <div class="table-responsive">
@@ -890,12 +762,9 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <script src="https://kendo.cdn.telerik.com/2021.1.119/js/kendo.all.min.js"></script>
-
 <script th:src="@{employee/dashboard.js}"></script>
-<script th:src="@{employee/custom.js}"></script>
-<!-- Core JS file -->
-<script th:src="@{/employee/photo-swipe/photoswipe.js}"></script>
-<!-- UI JS file -->
+<script th:src="@{employee/custom.js}"></script> <!-- Core JS file -->
+<script th:src="@{/employee/photo-swipe/photoswipe.js}"></script> <!-- UI JS file -->
 <script th:src="@{/employee/photo-swipe/photoswipe-ui-default.min.js}"></script>
 </body>
 </html>
