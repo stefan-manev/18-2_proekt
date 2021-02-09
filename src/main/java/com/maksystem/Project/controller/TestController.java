@@ -54,7 +54,7 @@ public class TestController {
 	@GetMapping("/employee/{id}/shift")
 	public List<Shift> getShifts(@PathVariable Long id)
 	{
-		return shiftService.getShifts(id);
+		return shiftService.getShifts();
 		
 	}
 //	@GetMapping("/employee/{id}/{daysleft}/absence_update")

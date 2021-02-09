@@ -1,5 +1,6 @@
 package com.maksystem.Project.Models;
 
+import com.sun.istack.Nullable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,6 +42,7 @@ public class Employee implements UserDetails{
 	private String password;
 	@Enumerated(EnumType.STRING)
     private RoleTypes role;
+	@Nullable
 	private Integer salary;
 	private String position;
 	private Boolean enabled;
