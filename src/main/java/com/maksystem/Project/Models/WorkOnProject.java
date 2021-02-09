@@ -20,4 +20,8 @@ public class WorkOnProject {
     @ManyToOne
     @MapsId("project")
     private Project projectl;
+
+    @ManyToOne
+    @MapsId("category")
+    private Category category;
 }

@@ -16,5 +16,6 @@ public class WorkOnProjectKey implements Serializable {
 
     private Long project;
 
+    private Long category;
 
 }
