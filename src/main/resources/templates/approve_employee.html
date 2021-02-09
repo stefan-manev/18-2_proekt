@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<meta charset="ISO-8859-1">
+<title>Employee approval form</title>
+</head>
+<body th:object="${approval}">
+	<div class="container"></div>
+
+	<hr>
+	<h2>Approve employee</h2>
+ 	
+	<table  border="1" class="table table-striped table-responsive-md">
+
+    <tr>
+        <td th:text="${approval.firstName}"></td>
+        <td th:text="${approval.lastName}"> </td>
+        <td th:text="${approval.email}"></td>
+        <td>
+
+    </tr>
+</table> 
+
+	<form action="#" th:action="@{/ApproveEmployeeForm}" th:object="${new_info}" 
+		method="POST">
+
+	    <label>Position</label>
+		<input type="text" th:field="*{position}">
+		 <label>Salary</label>
+		<input type="number" th:field="*{salary}">
+		 <label>Role</label>
+		<input type="text" th:field="*{role}">
+
+
+		<input type="text" th:field="*{email}" th:value="${approval.email}">
+
+		
+
+
+
+		 <!-- <input type="text" th:field="${var.email}"  > -->
+		  <!-- 		 <div th:with="*{email}=${var.email}">
+ -->		 
+	
+		<button type="submit" class="btn btn-info col-2">Approve</button> 
+
+	</form>
+	
+</body>
+</html>

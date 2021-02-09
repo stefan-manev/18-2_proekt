@@ -1,11 +1,18 @@
 package com.maksystem.Project.Services;
 
+
 import com.maksystem.Project.Models.Employee;
 import com.maksystem.Project.Models.HasRole;
 import com.maksystem.Project.Models.Registration;
 import com.maksystem.Project.Models.Role;
 import com.maksystem.Project.Repos.HasRoleRepo;
 import com.maksystem.Project.Repos.RegistrationRepo;
+import com.maksystem.Project.email.EmailValidator;
+import com.maksystem.Project.requests.RegistrationRequest;
+
+import lombok.AllArgsConstructor;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,107 +21,44 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+// ke se potsreduva
 @Service
+@AllArgsConstructor
 public class RegistrationService {
+	
+	
+	private final UserService userService;
+	private final EmailValidator emailValidator;
 
-    @Autowired
-    private RegistrationRepo registrationRepo;
+	public String register(RegistrationRequest request) {
+		boolean isValidEmail = emailValidator.test(request.getEmail());
+		if (request.getFirst_name() != null
+				&& request.getLast_name() != null 
+				&& request.getEmail() != null
+				&& request.getBday() != null
+				&& request.getPassword() != null
+				&& request.getPassword_confirmation() != null) {
+			
+			if (isValidEmail) {
+				if (request.getPassword().equals(request.getPassword_confirmation())) {
 
-    @Autowired
-    private EmployeeService employeeService;
+					// registracija na employee-to
+					userService.signUp(new Employee(request.getFirst_name(), request.getLast_name(),
+							request.getEmail(), request.getPhone(), request.getBday(), request.getPassword()));
 
-    @Autowired
-    private HasRoleRepo hasRoleRepo;
+					return "success";
+				} else {
+					// ne matching passwords
+					throw new IllegalStateException("password is not matching, please try again");
+				}
+			} else {
+				// nevaliden email
+				throw new IllegalStateException("email not valid");
+			}
 
-    public List<Registration> getAllRegistrations() {
-        return registrationRepo.findAll();
-    }
-
-    public Registration addRegistration(Registration registration) {
-
-        if (registration != null && hasAllComps(registration)) {
-            registrationRepo.save(registration);
-        }
-
-        return registration;
-    }
-
-    public Registration getById(Long id) {
-        return registrationRepo.getOne(id);
-    }
-
-
-    public List<Registration> getByName(String name) {
-        return registrationRepo.findRegistrationsByFname(name);
-    }
-
-    public List<Registration> getByLastName(String name) {
-        return registrationRepo.findRegistrationsByLname(name);
-    }
-
-
-    public Registration editRegistration(Long id, Registration registration) {
-
-        if (getById(id) == null) return null;
-
-        Registration reg = getById(id);
-
-        reg.updateRegistration(registration);
-
-        try {
-            registrationRepo.save(reg);
-            return reg;
-        } catch (Exception e) {
-            return null;
-        }
-
-    }
-
-    public String deleteRegistration(Long id) {
-        try {
-            registrationRepo.deleteById(id);
-            return "DELETED";
-        } catch (Exception e) {
-            return "NOTDELETED";
-        }
-
-    }
-
-    private boolean hasAllComps(Registration registration) {
-        if (registration.getFname() != null &&
-            registration.getLname() != null &&
-            registration.getBirthday() != null &&
-            registration.getPassword() != null &&
-            registration.getPassword_conf() != null &&
-            registration.getEmail() != null) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean aprove(Registration registration, Role role, String position, float salary) {
-        Employee employee = new Employee();
-        employee.setFname(registration.getFname());
-        employee.setLname(registration.getLname());
-        employee.setBirthday(registration.getBirthday());
-        employee.setEmail(registration.getEmail());
-        employee.setPassword(registration.getPassword());
-        employee.setPassword_conf(registration.getPassword_conf());
-
-        HasRole hasRole = new HasRole();
-
-        employee.setPosition(position);
-        employee.setSalary(salary);
-
-        hasRole.setRole(role);
-        hasRole.setEmployee(employee);
-
-        try {
-            employeeService.insertEmployee(employee);
-            hasRoleRepo.save(hasRole);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
+		} else {
+			// missing fields
+			throw new IllegalStateException("missing fieldss");
+		}
+	}
 }
