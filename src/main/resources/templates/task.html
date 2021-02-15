@@ -60,7 +60,7 @@
     <select name="category" onchange="this.form.submit();" class="custom-select custom-select-lg mb-3">
         <option selected disabled label="Project & Categories"></option>
         <optgroup th:each="project : ${employee_projects}" th:label="${project.p_name}">
-            <option th:each="category : ${project.categories}" th:text="${category.c_name}" th:value="${category.category_id}"></option>
+            <option th:each="category : ${project.getCategories()}" th:text="${category.c_name}" th:value="${category.category_id}"></option>
         </optgroup>
     </select>
 </form>

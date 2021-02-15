@@ -74,7 +74,7 @@ public class ProjectService {
 //    }
 
     public String addCategory(Category category, Project project) {
-        Set<Category> categories = project.getCategories();
+        List<Category> categories = project.getCategories();
         categories.add(category);
         project.setCategories(categories);
 

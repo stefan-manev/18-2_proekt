@@ -6,9 +6,7 @@ import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @DynamicUpdate
@@ -28,7 +26,7 @@ public class Project {
 
     @OneToMany(mappedBy = "project")
     @Getter @Setter
-    private Set<Category> categories;
+    private List<Category> categories;
 
 //    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
 //    private Collection<WorkOnProject> wops = new ArrayList<>();
@@ -42,5 +40,30 @@ public class Project {
                 "Name='" + p_name + '\'' +
                 ", Description='" + p_description + '\'' +
                 '}';
+    }
+
+    public void setCategories(List<Category> categories) {
+        Set<Category> distinctCats = new HashSet<>();
+        categories.forEach(category -> {
+            distinctCats.add(category);
+        });
+        categories = new ArrayList<>(distinctCats);
+        Collections.sort(categories, new Comparator<Category>() {
+            @Override
+            public int compare(Category c1, Category c2) {
+                return c1.getCategory_id().compareTo(c2.getCategory_id());
+            }
+        });
+        this.categories = categories;
+    }
+
+    public List<Category> getCategories() {
+        Collections.sort(this.categories, new Comparator<Category>() {
+            @Override
+            public int compare(Category c1, Category c2) {
+                return c1.getCategory_id().compareTo(c2.getCategory_id());
+            }
+        });
+        return this.categories;
     }
 }

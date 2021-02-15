@@ -10,10 +10,7 @@ import com.maksystem.Project.Repos.ProjectRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class E_P_C_Service {
@@ -33,7 +30,7 @@ public class E_P_C_Service {
         this.employeeService = employeeService;
     }
 
-    public Set<Project> getProjectsByEmployee(String email) {
+    public List<Project> getProjectsByEmployee(String email) {
         Employee me = employeeService.findByEmail(email);
         Long me_id = me.getEmployee_id();
         List<Emp_Proj_Cat> thingsIWorkOn = new ArrayList<>();
@@ -44,7 +41,15 @@ public class E_P_C_Service {
                     projectRepo.getOne(row.getProj_id())
             );
         });
-        return projects;
+        List<Project> projectsList = new ArrayList<Project>(projects);
+        Collections.sort(projectsList, new Comparator<Project>() {
+
+            public int compare(Project p1, Project p2) {
+                // compare two instance of `Score` and return `int` as result.
+                return p1.getProject_id().compareTo(p2.getProject_id());
+            }
+        });
+        return projectsList;
     }
 
     public List<Category> getCategoriesByEmployee(String email) {
@@ -58,7 +63,15 @@ public class E_P_C_Service {
                     categoryRepo.getOne(row.getCat_id())
             );
         });
-        return categories;
+        List<Category> categoryList = new ArrayList<Category>(categories);
+        Collections.sort(categoryList, new Comparator<Category>() {
+
+            public int compare(Category c1, Category c2) {
+                // compare two instance of `Score` and return `int` as result.
+                return c1.getCategory_id().compareTo(c2.getCategory_id());
+            }
+        });
+        return categoryList;
     }
 
 }

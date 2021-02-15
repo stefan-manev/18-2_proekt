@@ -70,15 +70,14 @@ public class TaskController {
         String email = loggedInUser.getName();
         model.addAttribute("employee_projects", e_p_c_service.getProjectsByEmployee(email));
 
-        if(catId != null) {
-            model.addAttribute("tasks_to_do", taskService.getTasksToDoByCat(catId));
-            System.out.println("\n\n\n" + taskService.getTasksToDoByCat(catId));
-            model.addAttribute("tasks_in_progress", taskService.getTasksInProgressByCat(catId));
-            System.out.println("\n\n\n" + taskService.getTasksInProgressByCat(catId));
-            model.addAttribute("tasks_on_review", taskService.getTasksOnReviewByCat(catId));
-
-            model.addAttribute("tasks_finished", taskService.getTasksFinishedByCat(catId));
-        }
+            if (catId != null) {
+                model.addAttribute("tasks_to_do", taskService.getTasksToDoByCat(catId));
+                System.out.println("\n\n\n" + taskService.getTasksToDoByCat(catId));
+                model.addAttribute("tasks_in_progress", taskService.getTasksInProgressByCat(catId));
+                System.out.println("\n\n\n" + taskService.getTasksInProgressByCat(catId));
+                model.addAttribute("tasks_on_review", taskService.getTasksOnReviewByCat(catId));
+                model.addAttribute("tasks_finished", taskService.getTasksFinishedByCat(catId));
+            }
 
         return "task";
 
