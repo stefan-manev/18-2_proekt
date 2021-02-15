@@ -2,7 +2,7 @@ package com.maksystem.Project.Services;
 
 import com.maksystem.Project.Models.*;
 import com.maksystem.Project.Repos.ProjectRepo;
-import com.maksystem.Project.Repos.WorkOnProjectRepo;
+//import com.maksystem.Project.Repos.WorkOnProjectRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +15,8 @@ public class ProjectService {
     @Autowired
     private ProjectRepo projectRepo;
 
-    @Autowired
-    private WorkOnProjectRepo workOnProjectRepo;
+//    @Autowired
+//    private WorkOnProjectRepo workOnProjectRepo;
 
 
     public List<Project> getAllProjects() {
@@ -52,28 +52,26 @@ public class ProjectService {
         projectRepo.delete(project);
     }
 
-    public String addemployee(Employee employee, Project project, Category category) {
-        WorkOnProject wkp = new WorkOnProject();
-
-        WorkOnProjectKey wkpKey = new WorkOnProjectKey();
-        wkpKey.setEmployee(employee.getEmployee_id());
-        wkpKey.setProject(project.getProject_id());
-        wkpKey.setCategory(category.getCategory_id());
-
-        wkp.setEmployee(employee);
-        wkp.setProjectl(project);
-        wkp.setCategory(category);
-        wkp.setId(wkpKey);
-
-        try {
-            workOnProjectRepo.save(wkp);
-            return "Employee added";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Error occurred";
-        }
-
-    }
+//    public String addemployee(Employee employee, Project project) {
+//        WorkOnProject wkp = new WorkOnProject();
+//
+//        WorkOnProjectKey wkpKey = new WorkOnProjectKey();
+//        wkpKey.setEmployeeId(employee.getEmployee_id());
+//        wkpKey.setProjectId(project.getProject_id());
+//
+//        wkp.setEmployee(employee);
+//        wkp.setProject(project);
+//        wkp.setId(wkpKey);
+//
+//        try {
+//            workOnProjectRepo.save(wkp);
+//            return "Employee added";
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return "Error occurred";
+//        }
+//
+//    }
 
     public String addCategory(Category category, Project project) {
         Set<Category> categories = project.getCategories();

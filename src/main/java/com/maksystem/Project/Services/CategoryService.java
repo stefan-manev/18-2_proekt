@@ -23,6 +23,10 @@ public class CategoryService {
         return categoryRepo.getOne(id);
     }
 
+    public Set<Task> getTasksForCatId(Long id) {
+        return categoryRepo.getOne(id).getTasks();
+    }
+
     public Category saveCategory(Category category) {
         if (category != null) {
             categoryRepo.save(category);

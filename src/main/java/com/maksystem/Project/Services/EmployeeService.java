@@ -44,7 +44,7 @@ public class EmployeeService {
 	 * return employee; }
 	 */
 
-    public Employee findByEmial(String email){
+    public Employee findByEmail(String email){
         return employeeRepo.findByEmail(email).orElseThrow();
     }
 }

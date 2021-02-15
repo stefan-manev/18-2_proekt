@@ -1,11 +1,13 @@
 package com.maksystem.Project.Models;
 
+
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -19,14 +21,17 @@ public class Project {
     private Long project_id;
 
     private String p_name;
+
     private String p_description;
-    private boolean active;
+
+//    private boolean active;
 
     @OneToMany(mappedBy = "project")
-
     @Getter @Setter
-
     private Set<Category> categories;
+
+//    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+//    private Collection<WorkOnProject> wops = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private ProjectStatus projectStatus;

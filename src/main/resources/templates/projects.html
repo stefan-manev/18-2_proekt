@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Projects</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <style>
+        .hidden_row {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <div th:each="project : ${projects}">
+    <tr>
+        <td th:text="${project.project_id}"></td>
+        <td th:text="${project.p_name}"></td>
+        <td th:text="${project.p_description}"></td>
+        <td th:text="${project.projectStatus}"></td>
+    </tr>
+    <tr th:each="category : ${project.categories}" class="hidden_row" th:id="${project.project_id}">
+        <td th:text="category.c_name">
+        </td>
+    </tr>
+    </div>
+
+<!--    <td>-->
+<!--        <div class="dropdown">-->
+<!--            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                See more...-->
+<!--            </button>-->
+<!--            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--                <form action=""></form>-->
+<!--                <a class="dropdown-item" th:each="category : ${project.categories}" th:text="${category.c_name}" href="@{../${category.category_id}}" ></a>-->
+<!--            </div>-->
+<!--        </div></td>-->
+</table>
+<script type="text/javascript">
+    function showHideRow(row) {
+        $("#" + row).toggle();
+    }
+</script>
+</body>
+</html>

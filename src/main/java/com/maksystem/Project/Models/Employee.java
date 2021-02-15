@@ -14,10 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -25,28 +22,34 @@ import java.util.Set;
 @Getter @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
-public class Employee implements UserDetails{
+public class Employee implements UserDetails {
 
 
-    @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE
-    )
-    private Long employee_id;
+	@Id
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE
+	)
+	private Long employee_id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String phone;
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birthday;
 	private String password;
 	@Enumerated(EnumType.STRING)
-    private RoleTypes role;
+	private RoleTypes role;
 	@Nullable
 	private Integer salary;
 	private String position;
 	private Boolean enabled;
-	
+
+//	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+//	private Collection<WorkOnProject> wops = new ArrayList<>();
+//
+//	@ManyToMany(mappedBy = "employees")
+//	private Set<Category> categories = new HashSet<>();
+
 	public Employee(String firstName, String lastName, String email, String phone, Date birthday, String password) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -54,15 +57,15 @@ public class Employee implements UserDetails{
 		this.phone = phone;
 		this.birthday = birthday;
 		this.password = password;
-		this.enabled= false;
-	
+		this.enabled = false;
+
 	}
-	
-	
+
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		SimpleGrantedAuthority authority =
-                new SimpleGrantedAuthority(role.name());
+				new SimpleGrantedAuthority(role.name());
 		return Collections.singletonList(authority);
 	}
 
@@ -77,7 +80,7 @@ public class Employee implements UserDetails{
 		// TODO Auto-generated method stub
 		return email;
 	}
-	
+
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
@@ -101,19 +104,21 @@ public class Employee implements UserDetails{
 		// TODO Auto-generated method stub
 		return enabled;
 	}
-    
-    
-    
-    @Override
-    public String toString() {
-        return String.format("Employee: %s %s", getFirstName(), getLastName());
-        }
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    
-    @JoinTable(name = "employee_project", joinColumns = { @JoinColumn(name = "employee_id")}, inverseJoinColumns = { @JoinColumn(name = "project_id")})
-    
-    @Getter @Setter
-    private Set<Project> projects = new HashSet<>();}
+
+	@Override
+	public String toString() {
+		return String.format("Employee: %s %s", getFirstName(), getLastName());
+	}
+
+
+}
+
+//    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//
+//    @JoinTable(name = "employee_project", joinColumns = { @JoinColumn(name = "employee_id")}, inverseJoinColumns = { @JoinColumn(name = "project_id")})
+//
+//    @Getter @Setter
+//    private Set<Project> projects = new HashSet<>();}
 
  
