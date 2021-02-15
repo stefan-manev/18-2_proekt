@@ -1,8 +1,6 @@
 package com.maksystem.Project.controller;
 
-import com.maksystem.Project.Models.Category;
 import com.maksystem.Project.Models.TaskStatus;
-import com.maksystem.Project.Services.CategoryService;
 import com.maksystem.Project.Services.E_P_C_Service;
 import com.maksystem.Project.Services.TaskService;
 import org.springframework.security.core.Authentication;
@@ -72,14 +70,12 @@ public class TaskController {
 
             if (catId != null) {
                 model.addAttribute("tasks_to_do", taskService.getTasksToDoByCat(catId));
-                System.out.println("\n\n\n" + taskService.getTasksToDoByCat(catId));
                 model.addAttribute("tasks_in_progress", taskService.getTasksInProgressByCat(catId));
-                System.out.println("\n\n\n" + taskService.getTasksInProgressByCat(catId));
                 model.addAttribute("tasks_on_review", taskService.getTasksOnReviewByCat(catId));
                 model.addAttribute("tasks_finished", taskService.getTasksFinishedByCat(catId));
             }
 
-        return "task";
+        return "tasks";
 
     }
 

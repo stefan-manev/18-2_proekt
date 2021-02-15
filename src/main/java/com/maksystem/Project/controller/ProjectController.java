@@ -17,7 +17,7 @@ public class ProjectController {
         this.projectService = projectService;
     }
 
-    @GetMapping("/list")
+    @GetMapping
     public String getAllProjects(Model model) {
         model.addAttribute("projects", projectService.getAllProjects());
         return "projects";
