@@ -75,7 +75,7 @@ public class TaskController {
                 model.addAttribute("tasks_finished", taskService.getTasksFinishedByCat(catId));
             }
 
-        return "tasks";
+        return "task-test";
 
     }
 
@@ -136,12 +136,16 @@ public class TaskController {
         taskService.removeTaskById(t_id);
     }
 
-    @PutMapping(path = "{t_id}")
-    public void updateTask(@PathVariable("t_id") Long t_id,
-                           @RequestParam(required = false) String t_name,
-                           @RequestParam(required = false) String t_description,
-                           @RequestParam(required = false) TaskStatus taskStatus) {
-        taskService.updateTask(t_id, t_name, t_description, taskStatus);
+    @RequestMapping(value = "{currentPath}/{catParam}/{task_id}/{taskStatus}")
+    public String updateTask(@PathVariable(value = "currentPath", required = false) String current_path,
+                                 @PathVariable(value = "catParam", required = false) String catParam,
+                                 @PathVariable(value = "task_id", required = false) String task_id,
+                           @PathVariable(value = "taskStatus", required = false) TaskStatus taskStatus) {
+        taskService.changeTaskStatus(task_id, taskStatus);
+
+        return "redirect:/" + current_path + "?category=" + catParam;
     }
 
 }
+
+//    @PathVariable(value = "category", required = true) String catId,

@@ -142,4 +142,26 @@ public class TaskService {
         }
 
     }
+
+    public static <T extends Enum<T>> T getEnumFromString(Class<T> c, String string) {
+        if( c != null && string != null ) {
+            try {
+                return Enum.valueOf(c, string.trim().toUpperCase());
+            } catch(IllegalArgumentException ex) {
+            }
+        }
+        return null;
+    }
+
+    public void changeTaskStatus(String t_id, TaskStatus taskStatus) {
+        Long longId = Long.parseLong(t_id);
+        Task taskToUpdate = taskRepo.findById(longId).
+                orElseThrow(
+                        () -> new IllegalStateException("Task with id " + longId + " not found in the database")
+                );
+        if (!Objects.equals(taskToUpdate.getTaskStatus(), taskStatus)) {
+            taskToUpdate.setTaskStatus(taskStatus);
+            taskRepo.save(taskToUpdate);
+        }
+    }
 }
