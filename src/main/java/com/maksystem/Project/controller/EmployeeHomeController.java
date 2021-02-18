@@ -1,5 +1,6 @@
 package com.maksystem.Project.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -49,5 +50,14 @@ public class EmployeeHomeController {
     public String endShift(){
         shiftService.endShift();
         return "redirect:/employee";
+    }
+
+    @RequestMapping("/profil")
+    public String v(Model model)
+    {
+        List<Employee> listemp = employeeService.getAllEmployees();
+        model.addAttribute("listemp", listemp);
+
+        return "profil";
     }
 }

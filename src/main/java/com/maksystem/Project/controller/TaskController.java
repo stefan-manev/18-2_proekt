@@ -75,7 +75,7 @@ public class TaskController {
                 model.addAttribute("tasks_finished", taskService.getTasksFinishedByCat(catId));
             }
 
-        return "task-test";
+        return "task-test-modal";
 
     }
 

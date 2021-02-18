@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Mak System</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Mak-System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:1235/project">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:1235/project">Other</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            More info
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">A</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</head>
+
+<head>
+    <title>Lists</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<div class="container">
+    <h1>Personal Information</h1>
+    <div class="table-responsive">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <img src="http://simpleicon.com/wp-content/uploads/camera.png"  width="22" height="22">
+                <p> Profile Picture</p>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+<body>
+
+<div class="container my-2">
+
+    <body>
+    <img src="data:image/png;base64,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"  width="22" height="22">
+
+    <tr th:each="employee : ${listemp}">
+        <p th:text="| Name:  ${employee.fname} ${employee.lname}|">
+    </tr>
+
+    <tr th:each="employee : ${listemp}">
+
+        </br>
+        <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-email-512.png"  width="22" height="22">
+        <p th:text="|E-mail address: ${employee.email} |">
+            </br>
+    </tr>
+
+    <tr th:each="employee : ${listemp}">
+
+        </br>
+        <img src="https://static.thenounproject.com/png/395665-200.png"  width="22" height="22">
+        <p th:text="|Birthday: ${employee.birthday} |"> </p>
+        </br></tr>
+
+    </body>
+    <script>
+        function getEmployeeDetails() {
+            $.ajax({url: "/employees", success: function(result){
+                    $(".table tbody").html('');
+                    if(result.length>0) {
+                        $.each(result, function( index, value ) {
+                            var htmlStr = "<p>"+result[index].description+"</td><td><img src=\""+result[index].profilePicPath+"\"></img></p>";
+                            $(".table tbody").append(htmlStr);
+                        });
+                    } else {
+                        $(".table tbody").append('<tr><td colspan="2" style="color:red;">No records to display</td></tr>');
+                    }
+                }});
+        }
+        $(document).ready(function () {
+            getEmployeeDetails();
+            $(".alert-success").hide();
+            $(".alert-danger").hide();
+            $("#btnSubmit").click(function () {
+                var form = $('#fileUploadForm')[0];
+                var data = new FormData(form);
+                var jsonDataObj = {
+                    "name": $("#name").val(),
+                    "description" : $("#description").val()
+                };
+                data.append("empJson", JSON.stringify(jsonDataObj));
+                $("#btnSubmit").prop("disabled", true);
+                $.ajax({
+                    type: "POST",
+                    enctype: 'multipart/form-data',
+                    url: "/employees",
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    timeout: 600000,
+                    success: function (data) {
+
+                        console.log("SUCCESS : ", data);
+                        $("#btnSubmit").prop("disabled", false);
+                        $(".alert-success").show();
+                        $(".alert-danger").hide();
+                        getEmployeeDetails();
+
+                    },
+                    error: function (e) {
+                        $(".alert-success").hide();
+                        $(".alert-danger").show();
+                        console.log("ERROR : ", e);
+                        $("#btnSubmit").prop("disabled", false);
+                    }
+                });
+            });
+        });
+    </script>
+    <div class="container">
+        <h5><span class="badge badge-secondary">Add New Profile Picture</span></h5>
+        <div class="alert alert-success">File uploaded successfully</div>
+        <div class="alert alert-danger">File is not uploaded. Error occurred</div>
+
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" class="form-control" id="description" placeholder="Enter description" name="description">
+        </div>
+        <form id="fileUploadForm">
+            <div class="form-group">
+                <input type="file" class="form-control-file border" name="file">
+            </div>
+        </form>
+
+
+
+
+        <button type="button" class="btn btn-primary" id="btnSubmit">Submit</button>
+        <button type="button" class="btn btn-secondary">
+            <a href="http://localhost:1235/project" class="badge badge-secondary ">My projects</a>
+        </button>
+
+
+
+
+
+    </div>
+    <br/>
+
+
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title>Dashboard Template · Bootstrap v4.6</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/dashboard/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+            integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+    <style>  .nav-link[data-toggle].collapsed:before {
+          content: " ▾";
+         
+    }
+
+      .nav-link[data-toggle]:not(.collapsed):before {
+          content: " ▴";
+         
+    }
+
+      .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+         
+    }
+
+     
+
+    @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+              font-size: 3.5rem;
+             
+        }
+
+         
+    }
+
+       #time {
+          font-size: 3em;
+         
+    }
+
+     
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.1.119/styles/kendo.common.min.css"/>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.1.119/styles/kendo.blueopal.min.css"/>
+    <!--Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet">
+    <!--load all styles -->      <!-- Custom styles for this template -->
+    <link th:href="@{/employee/dashboard.css}" rel="stylesheet"/>
+    <link th:href="@{/employee/custom.css}" rel="stylesheet"/>      <!-- Core CSS file -->
+    <link rel="stylesheet" th:href="@{/employee/photo-swipe/photoswipe.css}">
+    <!-- Skin CSS file (styling of UI - buttons, caption, etc.)          In the folder of skin CSS file there are also:          - .png and .svg icons sprite,          - preloader.gif (for browsers that do not support CSS animations) -->
+    <link rel="stylesheet" th:href="@{/employee/photo-swipe/default-skin/default-skin.css}">
+    <script th:inline="javascript">         /*<![CDATA[*/
+    var myVar;
+
+    function start() {
+        myVar = setInterval(myTimer, 1000);
+
+    }
+
+    function myTimer() {
+        var d = new Date();
+        document.getElementById("time").innerHTML = d.toLocaleTimeString();
+    }
+
+    function enablebtn1() {
+        document.getElementById("timeControlBtn1").disabled = !document.getElementById("timeControlBtn1").disabled;
+    }
+
+    function enablebtn2() {
+        document.getElementById("timeControlBtn2").disabled = !document.getElementById("timeControlBtn2").disabled;
+    }     /*]]>*/     </script>
+
+
+</head>
+<body>
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"><a
+        class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">MAK-SYSTEM</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
+            data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span></button>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <div id="popOverTitle" style="display: none;">
+                <div class="d-flex justify-content-center">
+                    <div><i class="far fa-clock"> </i><span class="time">00:00</span></div>
+                </div>
+            </div>
+            <div id="checkInOut" class="bg-primary nav-link popover-toggle"><i class="fas fa-play"></i><span
+                    id="checkInOutMenuItem"> 00:00</span></div>
+            <div id="customdiv" style="display: none">
+                <div id="popoverConrols" class="container">
+                    <div class="timeManage">
+                        <button id="button" class="btn btn-success" style="width:100%">
+                            Start Shift
+                        </button>
+                    </div>
+                    <div class="projectManage">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <select class="custom-select">
+                                    <option>Project #1</option>
+                                    <option>Project #2</option>
+                                    <option>Project #3</option>
+                                    <option>Project #4</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <select class="custom-select">
+                                    <option>Task #1</option>
+                                    <option>Task #2</option>
+                                    <option>Task #3</option>
+                                    <option>Task #4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-primary" style="width: 100%">Save Working Hours</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="sidebar-sticky pt-3"><h6
+                    class="sidebar-heading d-flex justify-content-between align-items-center px-3 mb-1 text-muted">
+                <span>Main Navigation</span></h6>
+                <ul class="nav flex-column flex-nowrap overflow-hidden">
+                    <li class="nav-item"><a class="nav-link collapsed text-truncate" href="#submenu1"
+                                            data-toggle="collapse" data-target="#submenu1"><i class="fa fa-table"></i>
+                        <span class="d-none d-sm-inline">Your vacation</span></a>
+                        <div class="collapse" id="submenu1" aria-expanded="false">
+                            <ul class="flex-column pl-4 nav">
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/employee/enter-vacation'}"><span>Enter vacation</span></a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/employee/view-calendar'}"><span>View calendar</span></a>
+                                </li>
+                                <!-- <li class="nav-item">                                      <a class="nav-link collapsed py-1" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1"><span>View Calendar</span></a>                                      <div class="collapse" id="submenu1sub1" aria-expanded="false">                                          <ul class="flex-column nav pl-5">                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-clock-o"></i>Sub-Sub-Menu #1</a>                                              </li>                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-dashboard">Sub-Sub-Menu #2</i> </a>                                              </li>                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-bar-chart"></i>Sub-Sub-Menu #3</a>                                              </li>                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-compass"></i>Sub-Sub-Menu #4</a>                                              </li>                                          </ul>                                      </div>-->                                 </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link collapsed text-truncate" href="#submenu2"
+                                            data-toggle="collapse" data-target="#submenu2"><i class="fa fa-table"></i>
+                        <span class="d-none d-sm-inline">Absences</span></a>
+                        <div class="collapse" id="submenu2" aria-expanded="false">
+                            <ul class="flex-column pl-4 nav">
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/employee/enter-absence'}"><span>Enter absence</span></a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/employee/view-calendar'}"><span>View calendar</span></a>
+                                </li>
+                                <!-- <li class="nav-item">                                      <a class="nav-link collapsed py-1" href="#submenu2sub1" data-toggle="collapse" data-target="#submenu2sub1"><span>Sub-Menu #2</span></a>                                      <div class="collapse" id="submenu2sub1" aria-expanded="false">                                          <ul class="flex-column nav pl-5">                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-clock-o"></i>Sub-Sub-Menu #1</a>                                              </li>                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-dashboard">Sub-Sub-Menu #2</i> </a>                                              </li>                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-bar-chart"></i>Sub-Sub-Menu #3</a>                                              </li>                                              <li class="nav-item">                                                  <a class="nav-link p-1" href="#">                                                      <i class="fa fa-fw fa-compass"></i>Sub-Sub-Menu #4</a>                                              </li>                                          </ul>                                      </div>-->                                 </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link collapsed text-truncate" href="#submenu3"
+                                            data-toggle="collapse" data-target="#submenu3"><i class="fa fa-table"></i>
+                        <span class="d-none d-sm-inline">Our Work</span></a>
+                        <div class="collapse" id="submenu3" aria-expanded="false">
+                            <ul class="flex-column pl-4 nav">
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/projects'}"><span>Projects</span></a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/tasks'}"><span>Tasks</span></a>
+                                </li>
+                                <!--<li class="nav-item">                                     <a class="nav-link collapsed py-1" href="#submenu3sub1" data-toggle="collapse" data-target="#submenu3sub1"><span>Sub-Menu #2</span></a>                                     <div class="collapse" id="submenu3sub1" aria-expanded="false">                                         <ul class="flex-column nav pl-5">                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-clock-o"></i>Sub-Sub-Menu #1</a>                                             </li>                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-dashboard"></i>Sub-Sub-Menu #2 </a>                                             </li>                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-bar-chart"></i>Sub-Sub-Menu #3</a>                                             </li>                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-compass"></i>Sub-Sub-Menu #4</a>                                             </li>                                         </ul>                                     </div>                                 </li>-->
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link collapsed text-truncate" href="#submenu3"
+                                            data-toggle="collapse" data-target="#submenu4"><i class="fa fa-table"></i>
+                        <span class="d-none d-sm-inline">Settings</span></a>
+                        <div class="collapse" id="submenu4" aria-expanded="false">
+                            <ul class="flex-column pl-4 nav">
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/employee/your-account'}"><span>Your account</span></a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link py-0" href="#"
+                                                        th:href="@{'/employee/change-password'}"><span>Change password</span></a>
+                                </li>
+                                <!--<li class="nav-item">                                     <a class="nav-link collapsed py-1" href="#submenu3sub1" data-toggle="collapse" data-target="#submenu3sub1"><span>Sub-Menu #2</span></a>                                     <div class="collapse" id="submenu3sub1" aria-expanded="false">                                         <ul class="flex-column nav pl-5">                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-clock-o"></i>Sub-Sub-Menu #1</a>                                             </li>                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-dashboard"></i>Sub-Sub-Menu #2 </a>                                             </li>                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-bar-chart"></i>Sub-Sub-Menu #3</a>                                             </li>                                             <li class="nav-item">                                                 <a class="nav-link p-1" href="#">                                                     <i class="fa fa-fw fa-compass"></i>Sub-Sub-Menu #4</a>                                             </li>                                         </ul>                                     </div>                                 </li>-->
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            </ul>             </li>         </nav>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Tasks</h1>
+            </div>
+		<form th:action="@{/tasks}" method="get">
+                <select name="category" onchange="this.form.submit();" class="custom-select custom-select-lg mb-3">
+                    <option selected disabled label="Project & Categories"></option>
+                    <optgroup th:each="project : ${employee_projects}" th:label="${project.p_name}">
+                        <option th:each="category : ${project.getCategories()}" th:text="${category.c_name}" th:value="${category.category_id}"></option>
+                    </optgroup>
+                </select>
+        </form>
+            <br><br><br>
+            <div class="row">
+                <div class="col-md-3">
+                    <div id="tasks-todo" class="task-column" style="background-color: #eeee;padding: 10px;"><h5
+                            class="text-muted">TO DO</h5>
+                        <div class="container tasks">
+                            <div class="task" th:each="task : ${tasks_to_do}">
+                                <div class="container" style="word-wrap: break-word;">
+                                    <div class="task-description" style="padding-top: 5px;" th:text="${task.t_description}">
+                                    </div>
+                                    <span class="badge badge-warning" th:text="${task.t_name}"></span>
+                                    <div class="row">
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-6"><img src="https://www.placehold.it/16x16"
+                                                                               class="rounded-circle"
+                                                                               alt="assigned to name"></div>
+                                        <div class="col-md-12"><p></p></div>
+                                        <div class="col-md-8"><p></p></div>
+                                        <a class="col-md-4 btn btn-success" th:href="@{{currentPath}/{catParam}/{task_id}/{taskStatus}(currentPath=${#httpServletRequest.requestURI}, catParam=${#httpServletRequest.getParameter('category')}, task_id=${task.task_id}, taskStatus='INPROGRESS')}"><i class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div id="tasks-in-progress" class="task-column" style="background-color: #eeee;padding: 10px;"><h5
+                            class="text-muted">IN PROGRESS</h5>
+                        <div class="container tasks">
+                            <div class="task" th:each="task : ${tasks_in_progress}">
+                                <div class="container" style="word-wrap: break-word">
+                                    <div class="task-description" style="padding-top: 5px;" th:text="${task.t_description}">
+                                    </div>
+                                    <span class="badge badge-warning" th:text="${task.t_name}"></span>
+                                    <div class="row">
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-6"><img src="https://www.placehold.it/16x16"
+                                                                   class="rounded-circle"
+                                                                   alt="assigned to name"></div>
+                                        <div class="col-md-12"><p></p></div>
+                                        <a class="col-md-4 btn btn-success" th:href="@{{currentPath}/{catParam}/{task_id}/{taskStatus}(currentPath=${#httpServletRequest.requestURI}, catParam=${#httpServletRequest.getParameter('category')}, task_id=${task.task_id}, taskStatus='TODO')}"><i class="fas fa-arrow-circle-left"></i></a>
+                                        <div class="col-md-4"><p></p></div>
+                                        <a class="col-md-4 btn btn-success" th:href="@{{currentPath}/{catParam}/{task_id}/{taskStatus}(currentPath=${#httpServletRequest.requestURI}, catParam=${#httpServletRequest.getParameter('category')}, task_id=${task.task_id}, taskStatus='ONREVIEW')}"><i class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div id="tasks-done" class="task-column" style="background-color: #eeee;padding: 10px;"><h5
+                            class="text-muted">CODE REVIEW</h5>
+                        <div class="container tasks">
+                            <div class="task" th:each="task : ${tasks_on_review}">
+                                <div class="container" style="word-wrap: break-word">
+                                    <div class="task-description" style="padding-top: 5px;" th:text="${task.t_description}">
+                                    </div>
+                                    <span class="badge badge-warning" th:text="${task.t_name}"></span>
+                                    <div class="row">
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-6"><img src="https://www.placehold.it/16x16"
+                                                                   class="rounded-circle"
+                                                                   alt="assigned to name"></div>
+                                        <div class="col-md-12"><p></p></div>
+                                        <a class="col-md-4 btn btn-success" th:href="@{{currentPath}/{catParam}/{task_id}/{taskStatus}(currentPath=${#httpServletRequest.requestURI}, catParam=${#httpServletRequest.getParameter('category')}, task_id=${task.task_id}, taskStatus='INPROGRESS')}"><i class="fas fa-arrow-circle-left"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div id="tasks-finished" class="task-column" style="background-color: #eeee;padding: 10px;"><h5
+                            class="text-muted">FINISHED</h5>
+                        <div class="container tasks">
+                            <div class="task" th:each="task : ${tasks_finished}">
+                                <div class="container" style="word-wrap: break-word">
+                                    <div class="task-description" style="padding-top: 5px;" th:text="${task.t_description}">
+                                    </div>
+                                    <span class="badge badge-warning" th:text="${task.t_name}"></span>
+                                    <div class="row">
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-6"><img src="https://www.placehold.it/16x16"
+                                                                               class="rounded-circle"
+                                                                               alt="assigned to name"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+<!--    MODAL MODAL MODAL MODAL-->
+<!--        <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"-->
+<!--             aria-hidden="true">-->
+<!--            <div class="modal-dialog modal-lg modal-xl" role="document">-->
+<!--                <div class="modal-content">-->
+<!--                    <div class="modal-header"><h5 class="modal-title" id="exampleModalLabel">[#TaskID] Task-->
+<!--                        Title</h5>-->
+<!--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span-->
+<!--                                aria-hidden="true">&times;</span></button>-->
+<!--                    </div>-->
+<!--                    <div class="modal-body">-->
+<!--                        <div class="container">-->
+<!--                            <div id="modal-task-status" class="row">-->
+<!--                                <div class="col-md-2"><strong class="text-right"> <i class="far fa-eye"></i> Task-->
+<!--                                    Status  </strong></div>-->
+<!--                                <div class="col-md-2"><strong class="text-right"> <span class="badge badge-success">Active</span>-->
+<!--                                    <span class="badge badge-danger">Inactive</span> </strong></div>-->
+<!--                                <div class="col-md-2"><strong class="text-right"> <i-->
+<!--                                        class="far fa-calendar-alt"></i> Deadline  </strong></div>-->
+<!--                                <div class="col-md-6"><span class="badge badge-info">18-03-2021</span></div>-->
+<!--                            </div>-->
+<!--                            <hr>-->
+<!--                            <div id="modal-task-deadline" class="row">-->
+<!--                                <div class="col-md-2"><strong class="text-right"> <i-->
+<!--                                        class="far fa-calendar-alt"></i> Deadline  </strong></div>-->
+<!--                                <div class="col-md-10"><span class="badge badge-info">18-03-2021</span></div>-->
+<!--                            </div>-->
+<!--                            <hr>-->
+<!--                            <div id="modal-task-assigned-project" class="row">-->
+<!--                                <div class="col-md-2"><strong class="text-right"> <i class="fas fa-info"></i>-->
+<!--                                    Project Name  </strong></div>-->
+<!--                                <div class="col-md-10"></div>-->
+<!--                            </div>-->
+<!--                            <hr>-->
+<!--                            <div id="modal-task-categories" class="row">-->
+<!--                                <div class="col-md-2"><strong class="text-right"> <i class="fas fa-list"></i>-->
+<!--                                    Categories  </strong></div>-->
+<!--                                <div class="col-md-10"><span class="badge badge-primary">Development</span> <span-->
+<!--                                        class="badge badge-primary">Marketing</span> <span-->
+<!--                                        class="badge badge-primary">Sales</span></div>-->
+<!--                            </div>-->
+<!--                            <hr>-->
+<!--                            <div id="modal-task-description" class="row">-->
+<!--                                <div class="col-md-2"><strong class="text-right"> <i class="fas fa-info-circle"></i>-->
+<!--                                    Description  </strong></div>-->
+<!--                                <div class="col-md-10"> Lorem Ipsum is simply dummy text of the printing and-->
+<!--                                    typesetting industry. Lorem Ipsum has been the industry's standard dummy text-->
+<!--                                    ever since the 1500s, when an unknown printer took a galley of type and-->
+<!--                                    scrambled it to make a type specimen book. It has survived not only five-->
+<!--                                    centuries, but also the leap into electronic typesetting, remaining essentially-->
+<!--                                    unchanged. It was popularised in the 1960s with the release of Letraset sheets-->
+<!--                                    containing Lorem Ipsum passages, and more recently with desktop publishing-->
+<!--                                    software like Aldus PageMaker including versions of Lorem Ipsum. -->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <hr>-->
+<!--                            <div id="modal-task-gallery" class="row">-->
+<!--                                <div class="col-md-2"><i class="far fa-images"></i> <strong class="text-right">Attachments</strong>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-10">-->
+<!--                                    <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">-->
+<!--                                        <figure itemprop="associatedMedia" itemscope-->
+<!--                                                itemtype="http://schema.org/ImageObject"><a-->
+<!--                                                href="https://www.placehold.it/600x600" itemprop="contentUrl"-->
+<!--                                                data-size="964x1024"> <img src="https://www.placehold.it/600x600"-->
+<!--                                                                           itemprop="thumbnail"-->
+<!--                                                                           alt="Image description"/> </a>-->
+<!--                                            <figcaption itemprop="caption description">Image caption 2.1-->
+<!--                                            </figcaption>-->
+<!--                                        </figure>-->
+<!--                                        <figure itemprop="associatedMedia" itemscope-->
+<!--                                                itemtype="http://schema.org/ImageObject"><a-->
+<!--                                                href="https://www.placehold.it/600x600" itemprop="contentUrl"-->
+<!--                                                data-size="1024x683"> <img src="https://www.placehold.it/600x600"-->
+<!--                                                                           itemprop="thumbnail"-->
+<!--                                                                           alt="Image description"/> </a>-->
+<!--                                            <figcaption itemprop="caption description">Image caption 2.2-->
+<!--                                            </figcaption>-->
+<!--                                        </figure>-->
+<!--                                        <figure itemprop="associatedMedia" itemscope-->
+<!--                                                itemtype="http://schema.org/ImageObject"><a-->
+<!--                                                href="https://www.placehold.it/600x600" itemprop="contentUrl"-->
+<!--                                                data-size="1024x768"> <img src="https://www.placehold.it/600x600"-->
+<!--                                                                           itemprop="thumbnail"-->
+<!--                                                                           alt="Image description"/> </a>-->
+<!--                                            <figcaption itemprop="caption description">Image caption 2.3-->
+<!--                                            </figcaption>-->
+<!--                                        </figure>-->
+<!--                                    </div>&lt;!&ndash; Root element of PhotoSwipe. Must have class pswp. &ndash;&gt;-->
+<!--                                    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">-->
+<!--                                        &lt;!&ndash; Background of PhotoSwipe.                                                  It's a separate element, as animating opacity is faster than rgba(). &ndash;&gt;-->
+<!--                                        <div class="pswp__bg"></div>&lt;!&ndash; Slides wrapper with overflow:hidden. &ndash;&gt;-->
+<!--                                        <div class="pswp__scroll-wrap">-->
+<!--                                            &lt;!&ndash; Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. &ndash;&gt;-->
+<!--                                            &lt;!&ndash; don't modify these 3 pswp__item elements, data is added later on. &ndash;&gt;-->
+<!--                                            <div class="pswp__container">-->
+<!--                                                <div class="pswp__item"></div>-->
+<!--                                                <div class="pswp__item"></div>-->
+<!--                                                <div class="pswp__item"></div>-->
+<!--                                            </div>-->
+<!--                                            &lt;!&ndash; Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. &ndash;&gt;-->
+<!--                                            <div class="pswp__ui pswp__ui&#45;&#45;hidden">-->
+<!--                                                <div class="pswp__top-bar">-->
+<!--                                                    &lt;!&ndash;  Controls are self-explanatory. Order can be changed. &ndash;&gt;-->
+<!--                                                    <div class="pswp__counter"></div>-->
+<!--                                                    <button class="pswp__button pswp__button&#45;&#45;close"-->
+<!--                                                            title="Close (Esc)"></button>-->
+<!--                                                    <button class="pswp__button pswp__button&#45;&#45;share"-->
+<!--                                                            title="Share"></button>-->
+<!--                                                    <button class="pswp__button pswp__button&#45;&#45;fs"-->
+<!--                                                            title="Toggle fullscreen"></button>-->
+<!--                                                    <button class="pswp__button pswp__button&#45;&#45;zoom"-->
+<!--                                                            title="Zoom in/out"></button>-->
+<!--                                                    &lt;!&ndash; Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR &ndash;&gt;-->
+<!--                                                    &lt;!&ndash; element will get class pswp__preloader&#45;&#45;active when preloader is running &ndash;&gt;-->
+<!--                                                    <div class="pswp__preloader">-->
+<!--                                                        <div class="pswp__preloader__icn">-->
+<!--                                                            <div class="pswp__preloader__cut">-->
+<!--                                                                <div class="pswp__preloader__donut"></div>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                                <div class="pswp__share-modal pswp__share-modal&#45;&#45;hidden pswp__single-tap">-->
+<!--                                                    <div class="pswp__share-tooltip"></div>-->
+<!--                                                </div>-->
+<!--                                                <button class="pswp__button pswp__button&#45;&#45;arrow&#45;&#45;left"-->
+<!--                                                        title="Previous (arrow left)"></button>-->
+<!--                                                <button class="pswp__button pswp__button&#45;&#45;arrow&#45;&#45;right"-->
+<!--                                                        title="Next (arrow right)"></button>-->
+<!--                                                <div class="pswp__caption">-->
+<!--                                                    <div class="pswp__caption__center"></div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="modal-footer">-->
+<!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                        <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+</div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+        <script src="https://kendo.cdn.telerik.com/2021.1.119/js/kendo.all.min.js"></script>
+        <script th:src="@{employee/dashboard.js}"></script>
+        <script th:src="@{employee/custom.js}"></script> <!-- Core JS file -->
+        <script th:src="@{/employee/photo-swipe/photoswipe.js}"></script> <!-- UI JS file -->
+        <script th:src="@{/employee/photo-swipe/photoswipe-ui-default.min.js}"></script>
+        <script>
+            function geturl() {
+                return window.location.href;
+            }
+        </script>
+</body>
+</html>

@@ -275,9 +275,9 @@
                                                                    class="rounded-circle"
                                                                    alt="assigned to name"></div>
                                         <div class="col-md-12"><p></p></div>
-                                        <a class="col-md-4 btn btn-success"><i class="fas fa-arrow-circle-left"></i></a>
+                                        <a class="col-md-4 btn btn-success" th:href="@{{currentPath}/{catParam}/{task_id}/{taskStatus}(currentPath=${#httpServletRequest.requestURI}, catParam=${#httpServletRequest.getParameter('category')}, task_id=${task.task_id}, taskStatus='TODO')}"><i class="fas fa-arrow-circle-left"></i></a>
                                         <div class="col-md-4"><p></p></div>
-                                        <a class="col-md-4 btn btn-success"><i class="fas fa-arrow-circle-right"></i></a>
+                                        <a class="col-md-4 btn btn-success" th:href="@{{currentPath}/{catParam}/{task_id}/{taskStatus}(currentPath=${#httpServletRequest.requestURI}, catParam=${#httpServletRequest.getParameter('category')}, task_id=${task.task_id}, taskStatus='ONREVIEW')}"><i class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -286,7 +286,7 @@
                 </div>
                 <div class="col-md-3">
                     <div id="tasks-done" class="task-column" style="background-color: #eeee;padding: 10px;"><h5
-                            class="text-muted">DONE</h5>
+                            class="text-muted">CODE REVIEW</h5>
                         <div class="container tasks">
                             <div class="task" th:each="task : ${tasks_on_review}">
                                 <div class="container" style="word-wrap: break-word">
@@ -299,7 +299,7 @@
                                                                    class="rounded-circle"
                                                                    alt="assigned to name"></div>
                                         <div class="col-md-12"><p></p></div>
-                                        <a class="col-md-4 btn btn-success"><i class="fas fa-arrow-circle-left"></i></a>
+                                        <a class="col-md-4 btn btn-success" th:href="@{{currentPath}/{catParam}/{task_id}/{taskStatus}(currentPath=${#httpServletRequest.requestURI}, catParam=${#httpServletRequest.getParameter('category')}, task_id=${task.task_id}, taskStatus='INPROGRESS')}"><i class="fas fa-arrow-circle-left"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -317,7 +317,7 @@
                                     <span class="badge badge-warning" th:text="${task.t_name}"></span>
                                     <div class="row">
                                         <div class="col-md-6"></div>
-                                        <div class="col-md-6"><p th:text="'#' + ${task.task_id}"></p><img src="https://www.placehold.it/16x16"
+                                        <div class="col-md-6"><img src="https://www.placehold.it/16x16"
                                                                                class="rounded-circle"
                                                                                alt="assigned to name"></div>
                                     </div>

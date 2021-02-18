@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Mak-System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:1235/">Employee List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Other</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            More info
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">A</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+</head>
+<body>
+<div>
+
+    <tr>
+
+
+    </tr>
+    <tr>
+
+        <div class="col-sm-12" align = "center">
+            <div class="panel-body" align = "center" >
+                <div align = "left" >
+                    <h1 >List of all projects</h1>
+                    <h3><a  th:href="@{'/new'}" >Create new project</a></h3>
+                </div>
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Project ID</th>
+                        <th>Project</th>
+                        <th>Name</th>
+                        <th>Description</th>
+
+                        <th>Edit</th>
+                        <th>Delete</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr  th:each="profile : ${listavraboten }">
+
+                        <td th:text="${profile.id}">Employee ID</td>
+                        <td th:text="${profile.project}">Project</td>
+                        <td th:text="${profile.name}">Name</td>
+                        <td th:text="${profile.description}">Description</td>
+
+
+
+
+                        <td>
+                            <a th:href="@{'/edit/' + ${profile.id}}">Edit</a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/delete/' + ${profile.id}}">Delete</a>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+
+
+                <div class="card bg-light text-white">
+                    <img src="https://liquidplanner-wpengine.netdna-ssl.com/wp-content/uploads/2019/09/iStock-905819004.jpg" class="card-img" alt="..." height="340">
+                    <div class="card-img-overlay"></div>
+                </div>
+
+            </div>
+
+    </tr>
+
+    </tbody>
+
+
+
+</body>
+
+
+
+
+</html>

@@ -20,7 +20,7 @@ public class ProjectController {
     @GetMapping
     public String getAllProjects(Model model) {
         model.addAttribute("projects", projectService.getAllProjects());
-        return "projects";
+        return "all_projects";
     }
 
     @PostMapping(

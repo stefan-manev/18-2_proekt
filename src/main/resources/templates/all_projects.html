@@ -59,6 +59,19 @@
          
     }
      
+
+    .projectStyle{
+        background-color: #3973ac;
+        text-decoration-color: white;
+        font-size: 1.5em;
+    }
+
+    .categoryStyle {
+        background-color: #ccd9ff;
+        color: black;
+        font-size: 1.25em;
+    }
+
     </style>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -227,7 +240,6 @@
             <table class="table table-bordered">
                 <thead class="thead-dark">
                 <tr>
-                    <th>#</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Status</th>
@@ -236,15 +248,14 @@
                 <tbody>
                 <div class="accordion" id="accordionExample">
                     <th:block th:each="project: ${projects}">
-                        <tr role="button" data-toggle="collapse"
+                        <tr role="button" data-toggle="collapse" style="background-color: #3973ac; color: white; font-size: 1.5em;"
                             th:attr="data-target='#id'+${project.project_id}, aria-controls='id'+${project.project_id}"
                             aria-expanded="false">
-                            <td th:text="${project.project_id}"></td>
                             <td th:text="${project.p_name}"></td>
                             <td th:text="${project.p_description}"></td>
                             <td th:text="${project.projectStatus}"></td>
                         </tr>
-                        <tr class="collapse" th:id="'id'+${project.project_id}"
+                        <tr class="collapse categoryStyle" th:id="'id'+${project.project_id}"
                             th:each="category : ${project.categories}">
                             <td style="text-align: center" colspan="4" th:text="${category.c_name}"
                                 data-parent="#accordionExample"></td>

@@ -24,7 +24,7 @@ public class MyProjectsController {
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
         String email = loggedInUser.getName();
         model.addAttribute("myProjects", e_p_c_service.getProjectsByEmployee(email));
-//        model.addAttribute("myCategories", e_p_c_service.getCategoriesByEmployee(email));
+        model.addAttribute("myCategories", e_p_c_service.getCategoriesByEmployee(email));
         return "my_projects";
     }
 
